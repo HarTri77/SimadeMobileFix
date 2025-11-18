@@ -1,0 +1,2340 @@
+Folder PATH listing
+Volume serial number is CA34-C05B
+D:.
+¦   .flutter-plugins-dependencies
+¦   .gitignore
+¦   .metadata
+¦   analysis_options.yaml
+¦   project_structure.txt
+¦   pubspec.lock
+¦   pubspec.yaml
+¦   README.md
+¦   simade_mobile.iml
+¦   
++---.dart_tool
+¦   ¦   package_config.json
+¦   ¦   package_graph.json
+¦   ¦   version
+¦   ¦   
+¦   +---chrome-device
+¦   ¦   +---Default
+¦   ¦       ¦   Account Web Data
+¦   ¦       ¦   Account Web Data-journal
+¦   ¦       ¦   Affiliation Database
+¦   ¦       ¦   Affiliation Database-journal
+¦   ¦       ¦   BookmarkMergedSurfaceOrdering
+¦   ¦       ¦   BrowsingTopicsSiteData
+¦   ¦       ¦   BrowsingTopicsSiteData-journal
+¦   ¦       ¦   BrowsingTopicsState
+¦   ¦       ¦   DIPS
+¦   ¦       ¦   Favicons
+¦   ¦       ¦   Favicons-journal
+¦   ¦       ¦   heavy_ad_intervention_opt_out.db
+¦   ¦       ¦   heavy_ad_intervention_opt_out.db-journal
+¦   ¦       ¦   History
+¦   ¦       ¦   History-journal
+¦   ¦       ¦   LOCK
+¦   ¦       ¦   LOG
+¦   ¦       ¦   LOG.old
+¦   ¦       ¦   Login Data
+¦   ¦       ¦   Login Data For Account
+¦   ¦       ¦   Login Data For Account-journal
+¦   ¦       ¦   Login Data-journal
+¦   ¦       ¦   Network Action Predictor
+¦   ¦       ¦   Network Action Predictor-journal
+¦   ¦       ¦   Preferences
+¦   ¦       ¦   PreferredApps
+¦   ¦       ¦   README
+¦   ¦       ¦   Secure Preferences
+¦   ¦       ¦   ServerCertificate
+¦   ¦       ¦   ServerCertificate-journal
+¦   ¦       ¦   SharedStorage
+¦   ¦       ¦   Shortcuts
+¦   ¦       ¦   Shortcuts-journal
+¦   ¦       ¦   Top Sites
+¦   ¦       ¦   Top Sites-journal
+¦   ¦       ¦   trusted_vault.pb
+¦   ¦       ¦   Web Data
+¦   ¦       ¦   Web Data-journal
+¦   ¦       ¦   
+¦   ¦       +---AutofillStrikeDatabase
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---blob_storage
+¦   ¦       ¦   +---2346b6b8-c779-4dfc-8453-12428c583be6
+¦   ¦       ¦   +---4cc4ce0e-5dfc-41e1-85c9-011968530a46
+¦   ¦       +---BudgetDatabase
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---chrome_cart_db
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---ClientCertificates
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---commerce_subscription_db
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---discounts_db
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---discount_infos_db
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---Download Service
+¦   ¦       ¦   +---EntryDB
+¦   ¦       ¦   ¦       LOCK
+¦   ¦       ¦   ¦       LOG
+¦   ¦       ¦   ¦       LOG.old
+¦   ¦       ¦   ¦       
+¦   ¦       ¦   +---Files
+¦   ¦       +---Extension Rules
+¦   ¦       ¦       000003.log
+¦   ¦       ¦       CURRENT
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       MANIFEST-000001
+¦   ¦       ¦       
+¦   ¦       +---Extension Scripts
+¦   ¦       ¦       000003.log
+¦   ¦       ¦       CURRENT
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       MANIFEST-000001
+¦   ¦       ¦       
+¦   ¦       +---Extension State
+¦   ¦       ¦       000003.log
+¦   ¦       ¦       CURRENT
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       MANIFEST-000001
+¦   ¦       ¦       
+¦   ¦       +---Feature Engagement Tracker
+¦   ¦       ¦   +---AvailabilityDB
+¦   ¦       ¦   ¦       LOCK
+¦   ¦       ¦   ¦       LOG
+¦   ¦       ¦   ¦       LOG.old
+¦   ¦       ¦   ¦       
+¦   ¦       ¦   +---EventDB
+¦   ¦       ¦           LOCK
+¦   ¦       ¦           LOG
+¦   ¦       ¦           LOG.old
+¦   ¦       ¦           
+¦   ¦       +---GCM Store
+¦   ¦       ¦   ¦   000003.log
+¦   ¦       ¦   ¦   CURRENT
+¦   ¦       ¦   ¦   LOCK
+¦   ¦       ¦   ¦   LOG
+¦   ¦       ¦   ¦   MANIFEST-000001
+¦   ¦       ¦   ¦   
+¦   ¦       ¦   +---Encryption
+¦   ¦       ¦           000003.log
+¦   ¦       ¦           CURRENT
+¦   ¦       ¦           LOCK
+¦   ¦       ¦           LOG
+¦   ¦       ¦           LOG.old
+¦   ¦       ¦           MANIFEST-000001
+¦   ¦       ¦           
+¦   ¦       +---Local Storage
+¦   ¦       ¦   +---leveldb
+¦   ¦       ¦           000003.log
+¦   ¦       ¦           CURRENT
+¦   ¦       ¦           LOCK
+¦   ¦       ¦           LOG
+¦   ¦       ¦           LOG.old
+¦   ¦       ¦           MANIFEST-000001
+¦   ¦       ¦           
+¦   ¦       +---Network
+¦   ¦       ¦       Cookies
+¦   ¦       ¦       Cookies-journal
+¦   ¦       ¦       Network Persistent State
+¦   ¦       ¦       NetworkDataMigrated
+¦   ¦       ¦       Reporting and NEL
+¦   ¦       ¦       Reporting and NEL-journal
+¦   ¦       ¦       TransportSecurity
+¦   ¦       ¦       Trust Tokens
+¦   ¦       ¦       Trust Tokens-journal
+¦   ¦       ¦       
+¦   ¦       +---optimization_guide_hint_cache_store
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---parcel_tracking_db
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---PersistentOriginTrials
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       
+¦   ¦       +---Safe Browsing Network
+¦   ¦       ¦       NetworkDataMigrated
+¦   ¦       ¦       Safe Browsing Cookies
+¦   ¦       ¦       Safe Browsing Cookies-journal
+¦   ¦       ¦       
+¦   ¦       +---Segmentation Platform
+¦   ¦       ¦   +---SegmentInfoDB
+¦   ¦       ¦   ¦       LOCK
+¦   ¦       ¦   ¦       LOG
+¦   ¦       ¦   ¦       LOG.old
+¦   ¦       ¦   ¦       
+¦   ¦       ¦   +---SignalDB
+¦   ¦       ¦   ¦       LOCK
+¦   ¦       ¦   ¦       LOG
+¦   ¦       ¦   ¦       LOG.old
+¦   ¦       ¦   ¦       
+¦   ¦       ¦   +---SignalStorageConfigDB
+¦   ¦       ¦           LOCK
+¦   ¦       ¦           LOG
+¦   ¦       ¦           LOG.old
+¦   ¦       ¦           
+¦   ¦       +---Service Worker
+¦   ¦       ¦   +---Database
+¦   ¦       ¦   ¦       000003.log
+¦   ¦       ¦   ¦       CURRENT
+¦   ¦       ¦   ¦       LOCK
+¦   ¦       ¦   ¦       LOG
+¦   ¦       ¦   ¦       LOG.old
+¦   ¦       ¦   ¦       MANIFEST-000001
+¦   ¦       ¦   ¦       
+¦   ¦       ¦   +---ScriptCache
+¦   ¦       ¦       ¦   2cc80dabc69f58b6_0
+¦   ¦       ¦       ¦   4cb013792b196a35_0
+¦   ¦       ¦       ¦   4cb013792b196a35_1
+¦   ¦       ¦       ¦   index
+¦   ¦       ¦       ¦   
+¦   ¦       ¦       +---index-dir
+¦   ¦       ¦               the-real-index
+¦   ¦       ¦               
+¦   ¦       +---Session Storage
+¦   ¦       ¦       000003.log
+¦   ¦       ¦       CURRENT
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       MANIFEST-000001
+¦   ¦       ¦       
+¦   ¦       +---Sessions
+¦   ¦       ¦       Session_13407385025147574
+¦   ¦       ¦       Session_13407385115645760
+¦   ¦       ¦       Tabs_13407385067229755
+¦   ¦       ¦       Tabs_13407385115762160
+¦   ¦       ¦       
+¦   ¦       +---Shared Dictionary
+¦   ¦       ¦   ¦   db
+¦   ¦       ¦   ¦   db-journal
+¦   ¦       ¦   ¦   
+¦   ¦       ¦   +---cache
+¦   ¦       ¦       ¦   index
+¦   ¦       ¦       ¦   
+¦   ¦       ¦       +---index-dir
+¦   ¦       ¦               the-real-index
+¦   ¦       ¦               
+¦   ¦       +---shared_proto_db
+¦   ¦       ¦   ¦   000003.log
+¦   ¦       ¦   ¦   CURRENT
+¦   ¦       ¦   ¦   LOCK
+¦   ¦       ¦   ¦   LOG
+¦   ¦       ¦   ¦   LOG.old
+¦   ¦       ¦   ¦   MANIFEST-000001
+¦   ¦       ¦   ¦   
+¦   ¦       ¦   +---metadata
+¦   ¦       ¦           000003.log
+¦   ¦       ¦           CURRENT
+¦   ¦       ¦           LOCK
+¦   ¦       ¦           LOG
+¦   ¦       ¦           LOG.old
+¦   ¦       ¦           MANIFEST-000001
+¦   ¦       ¦           
+¦   ¦       +---Site Characteristics Database
+¦   ¦       ¦       000003.log
+¦   ¦       ¦       CURRENT
+¦   ¦       ¦       LOCK
+¦   ¦       ¦       LOG
+¦   ¦       ¦       LOG.old
+¦   ¦       ¦       MANIFEST-000001
+¦   ¦       ¦       
+¦   ¦       +---Sync Data
+¦   ¦       ¦   +---LevelDB
+¦   ¦       ¦           000003.log
+¦   ¦       ¦           CURRENT
+¦   ¦       ¦           LOCK
+¦   ¦       ¦           LOG
+¦   ¦       ¦           LOG.old
+¦   ¦       ¦           MANIFEST-000001
+¦   ¦       ¦           
+¦   ¦       +---WebStorage
+¦   ¦               QuotaManager
+¦   ¦               QuotaManager-journal
+¦   ¦               
+¦   +---dartpad
+¦           web_plugin_registrant.dart
+¦           
++---.idea
+¦   ¦   modules.xml
+¦   ¦   workspace.xml
+¦   ¦   
+¦   +---libraries
+¦   ¦       Dart_SDK.xml
+¦   ¦       KotlinJavaRuntime.xml
+¦   ¦       
+¦   +---runConfigurations
+¦           main_dart.xml
+¦           
++---android
+¦   ¦   .gitignore
+¦   ¦   build.gradle.kts
+¦   ¦   gradle.properties
+¦   ¦   gradlew
+¦   ¦   gradlew.bat
+¦   ¦   local.properties
+¦   ¦   settings.gradle.kts
+¦   ¦   simade_mobile_android.iml
+¦   ¦   
+¦   +---app
+¦   ¦   ¦   build.gradle.kts
+¦   ¦   ¦   
+¦   ¦   +---src
+¦   ¦       +---debug
+¦   ¦       ¦       AndroidManifest.xml
+¦   ¦       ¦       
+¦   ¦       +---main
+¦   ¦       ¦   ¦   AndroidManifest.xml
+¦   ¦       ¦   ¦   
+¦   ¦       ¦   +---java
+¦   ¦       ¦   ¦   +---io
+¦   ¦       ¦   ¦       +---flutter
+¦   ¦       ¦   ¦           +---plugins
+¦   ¦       ¦   ¦                   GeneratedPluginRegistrant.java
+¦   ¦       ¦   ¦                   
+¦   ¦       ¦   +---kotlin
+¦   ¦       ¦   ¦   +---com
+¦   ¦       ¦   ¦       +---example
+¦   ¦       ¦   ¦           +---simade_mobile
+¦   ¦       ¦   ¦                   MainActivity.kt
+¦   ¦       ¦   ¦                   
+¦   ¦       ¦   +---res
+¦   ¦       ¦       +---drawable
+¦   ¦       ¦       ¦       launch_background.xml
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---drawable-v21
+¦   ¦       ¦       ¦       launch_background.xml
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---mipmap-hdpi
+¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---mipmap-mdpi
+¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---mipmap-xhdpi
+¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---mipmap-xxhdpi
+¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---mipmap-xxxhdpi
+¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---values
+¦   ¦       ¦       ¦       styles.xml
+¦   ¦       ¦       ¦       
+¦   ¦       ¦       +---values-night
+¦   ¦       ¦               styles.xml
+¦   ¦       ¦               
+¦   ¦       +---profile
+¦   ¦               AndroidManifest.xml
+¦   ¦               
+¦   +---gradle
+¦       +---wrapper
+¦               gradle-wrapper.jar
+¦               gradle-wrapper.properties
+¦               
++---build
+¦   ¦   210bad4901163cba762d02a4a1c86c00.cache.dill.track.dill
+¦   ¦   
+¦   +---dc6c7127688ceb2e0386d42c2cab5b38
+¦   ¦       gen_dart_plugin_registrant.stamp
+¦   ¦       gen_localizations.stamp
+¦   ¦       _composite.stamp
+¦   ¦       
+¦   +---flutter_assets
+¦       ¦   AssetManifest.bin
+¦       ¦   AssetManifest.bin.json
+¦       ¦   AssetManifest.json
+¦       ¦   FontManifest.json
+¦       ¦   NOTICES
+¦       ¦   
+¦       +---fonts
+¦       ¦       MaterialIcons-Regular.otf
+¦       ¦       
+¦       +---packages
+¦       ¦   +---cupertino_icons
+¦       ¦   ¦   +---assets
+¦       ¦   ¦           CupertinoIcons.ttf
+¦       ¦   ¦           
+¦       ¦   +---font_awesome_flutter
+¦       ¦       +---lib
+¦       ¦           +---fonts
+¦       ¦                   Font-Awesome-7-Brands-Regular-400.otf
+¦       ¦                   Font-Awesome-7-Free-Regular-400.otf
+¦       ¦                   Font-Awesome-7-Free-Solid-900.otf
+¦       ¦                   
+¦       +---shaders
+¦               ink_sparkle.frag
+¦               
++---ios
+¦   ¦   .gitignore
+¦   ¦   
+¦   +---Flutter
+¦   ¦   ¦   AppFrameworkInfo.plist
+¦   ¦   ¦   Debug.xcconfig
+¦   ¦   ¦   flutter_export_environment.sh
+¦   ¦   ¦   Generated.xcconfig
+¦   ¦   ¦   Release.xcconfig
+¦   ¦   ¦   
+¦   ¦   +---ephemeral
+¦   ¦           flutter_lldbinit
+¦   ¦           flutter_lldb_helper.py
+¦   ¦           
+¦   +---Runner
+¦   ¦   ¦   AppDelegate.swift
+¦   ¦   ¦   GeneratedPluginRegistrant.h
+¦   ¦   ¦   GeneratedPluginRegistrant.m
+¦   ¦   ¦   Info.plist
+¦   ¦   ¦   Runner-Bridging-Header.h
+¦   ¦   ¦   
+¦   ¦   +---Assets.xcassets
+¦   ¦   ¦   +---AppIcon.appiconset
+¦   ¦   ¦   ¦       Contents.json
+¦   ¦   ¦   ¦       Icon-App-1024x1024@1x.png
+¦   ¦   ¦   ¦       Icon-App-20x20@1x.png
+¦   ¦   ¦   ¦       Icon-App-20x20@2x.png
+¦   ¦   ¦   ¦       Icon-App-20x20@3x.png
+¦   ¦   ¦   ¦       Icon-App-29x29@1x.png
+¦   ¦   ¦   ¦       Icon-App-29x29@2x.png
+¦   ¦   ¦   ¦       Icon-App-29x29@3x.png
+¦   ¦   ¦   ¦       Icon-App-40x40@1x.png
+¦   ¦   ¦   ¦       Icon-App-40x40@2x.png
+¦   ¦   ¦   ¦       Icon-App-40x40@3x.png
+¦   ¦   ¦   ¦       Icon-App-60x60@2x.png
+¦   ¦   ¦   ¦       Icon-App-60x60@3x.png
+¦   ¦   ¦   ¦       Icon-App-76x76@1x.png
+¦   ¦   ¦   ¦       Icon-App-76x76@2x.png
+¦   ¦   ¦   ¦       Icon-App-83.5x83.5@2x.png
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---LaunchImage.imageset
+¦   ¦   ¦           Contents.json
+¦   ¦   ¦           LaunchImage.png
+¦   ¦   ¦           LaunchImage@2x.png
+¦   ¦   ¦           LaunchImage@3x.png
+¦   ¦   ¦           README.md
+¦   ¦   ¦           
+¦   ¦   +---Base.lproj
+¦   ¦           LaunchScreen.storyboard
+¦   ¦           Main.storyboard
+¦   ¦           
+¦   +---Runner.xcodeproj
+¦   ¦   ¦   project.pbxproj
+¦   ¦   ¦   
+¦   ¦   +---project.xcworkspace
+¦   ¦   ¦   ¦   contents.xcworkspacedata
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---xcshareddata
+¦   ¦   ¦           IDEWorkspaceChecks.plist
+¦   ¦   ¦           WorkspaceSettings.xcsettings
+¦   ¦   ¦           
+¦   ¦   +---xcshareddata
+¦   ¦       +---xcschemes
+¦   ¦               Runner.xcscheme
+¦   ¦               
+¦   +---Runner.xcworkspace
+¦   ¦   ¦   contents.xcworkspacedata
+¦   ¦   ¦   
+¦   ¦   +---xcshareddata
+¦   ¦           IDEWorkspaceChecks.plist
+¦   ¦           WorkspaceSettings.xcsettings
+¦   ¦           
+¦   +---RunnerTests
+¦           RunnerTests.swift
+¦           
++---lib
+¦   ¦   main.dart
+¦   ¦   
+¦   +---config
+¦   ¦       app_config.dart
+¦   ¦       
+¦   +---models
+¦   ¦       user_model.dart
+¦   ¦       
+¦   +---screens
+¦   ¦   +---auth
+¦   ¦   ¦       login_page.dart
+¦   ¦   ¦       register_page.dart
+¦   ¦   ¦       
+¦   ¦   +---dashboard
+¦   ¦           admin_dashboard.dart
+¦   ¦           warga_dashboard.dart
+¦   ¦           
+¦   +---services
+¦   ¦       auth_service.dart
+¦   ¦       
+¦   +---utils
+¦   ¦       app_colors.dart
+¦   ¦       validators.dart
+¦   ¦       
+¦   +---widgets
+¦           custom_text_field.dart
+¦           glass_container.dart
+¦           
++---linux
+¦   ¦   .gitignore
+¦   ¦   CMakeLists.txt
+¦   ¦   
+¦   +---flutter
+¦   ¦   ¦   CMakeLists.txt
+¦   ¦   ¦   generated_plugins.cmake
+¦   ¦   ¦   generated_plugin_registrant.cc
+¦   ¦   ¦   generated_plugin_registrant.h
+¦   ¦   ¦   
+¦   ¦   +---ephemeral
+¦   ¦       +---.plugin_symlinks
+¦   ¦           +---file_picker
+¦   ¦           ¦   ¦   analysis_options.yaml
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   CONTRIBUTING.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---android
+¦   ¦           ¦   ¦   ¦   build.gradle
+¦   ¦           ¦   ¦   ¦   proguard-rules.pro
+¦   ¦           ¦   ¦   ¦   settings.gradle
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---gradle
+¦   ¦           ¦   ¦   ¦   +---wrapper
+¦   ¦           ¦   ¦   ¦           gradle-wrapper.properties
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦       +---main
+¦   ¦           ¦   ¦           ¦   AndroidManifest.xml
+¦   ¦           ¦   ¦           ¦   
+¦   ¦           ¦   ¦           +---kotlin
+¦   ¦           ¦   ¦               +---com
+¦   ¦           ¦   ¦                   +---mr
+¦   ¦           ¦   ¦                       +---flutter
+¦   ¦           ¦   ¦                           +---plugin
+¦   ¦           ¦   ¦                               +---filepicker
+¦   ¦           ¦   ¦                                       FileInfo.kt
+¦   ¦           ¦   ¦                                       FilePickerDelegate.kt
+¦   ¦           ¦   ¦                                       FilePickerPlugin.kt
+¦   ¦           ¦   ¦                                       FileUtils.kt
+¦   ¦           ¦   ¦                                       MethodResultWrapper.kt
+¦   ¦           ¦   ¦                                       
+¦   ¦           ¦   +---example
+¦   ¦           ¦   ¦   ¦   analysis_options.yaml
+¦   ¦           ¦   ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   ¦   README.md
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---android
+¦   ¦           ¦   ¦   ¦   ¦   build.gradle.kts
+¦   ¦           ¦   ¦   ¦   ¦   gradle.properties
+¦   ¦           ¦   ¦   ¦   ¦   settings.gradle.kts
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---app
+¦   ¦           ¦   ¦   ¦   ¦   ¦   build.gradle.kts
+¦   ¦           ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   +---src
+¦   ¦           ¦   ¦   ¦   ¦       +---debug
+¦   ¦           ¦   ¦   ¦   ¦       ¦       AndroidManifest.xml
+¦   ¦           ¦   ¦   ¦   ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       +---main
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦   AndroidManifest.xml
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦       ¦   +---kotlin
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦   +---com
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦       +---mr
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦           +---flutter
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦               +---plugin
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦                   +---filepicker
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦                       +---file_picker_example
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦                               MainActivity.kt
+¦   ¦           ¦   ¦   ¦   ¦       ¦   ¦                               
+¦   ¦           ¦   ¦   ¦   ¦       ¦   +---res
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---drawable
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       launch_background.xml
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---drawable-v21
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       launch_background.xml
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-hdpi
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-mdpi
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-xhdpi
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-xxhdpi
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-xxxhdpi
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---values
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       styles.xml
+¦   ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+¦   ¦           ¦   ¦   ¦   ¦       ¦       +---values-night
+¦   ¦           ¦   ¦   ¦   ¦       ¦               styles.xml
+¦   ¦           ¦   ¦   ¦   ¦       ¦               
+¦   ¦           ¦   ¦   ¦   ¦       +---profile
+¦   ¦           ¦   ¦   ¦   ¦               AndroidManifest.xml
+¦   ¦           ¦   ¦   ¦   ¦               
+¦   ¦           ¦   ¦   ¦   +---gradle
+¦   ¦           ¦   ¦   ¦       +---wrapper
+¦   ¦           ¦   ¦   ¦               gradle-wrapper.properties
+¦   ¦           ¦   ¦   ¦               
+¦   ¦           ¦   ¦   +---ios
+¦   ¦           ¦   ¦   ¦   ¦   gpxgenerator_path.gpx
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---Flutter
+¦   ¦           ¦   ¦   ¦   ¦       AppFrameworkInfo.plist
+¦   ¦           ¦   ¦   ¦   ¦       Debug.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦       Release.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦       
+¦   ¦           ¦   ¦   ¦   +---Runner
+¦   ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.h
+¦   ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.m
+¦   ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.swift
+¦   ¦           ¦   ¦   ¦   ¦   ¦   File.swift
+¦   ¦           ¦   ¦   ¦   ¦   ¦   Info.plist
+¦   ¦           ¦   ¦   ¦   ¦   ¦   main.m
+¦   ¦           ¦   ¦   ¦   ¦   ¦   Runner-Bridging-Header.h
+¦   ¦           ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   +---Assets.xcassets
+¦   ¦           ¦   ¦   ¦   ¦   ¦   +---AppIcon.appiconset
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Contents.json
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-1024x1024@1x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-20x20@1x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-20x20@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-20x20@3x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-29x29@1x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-29x29@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-29x29@3x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-40x40@1x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-40x40@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-40x40@3x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-60x60@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-60x60@3x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-76x76@1x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-76x76@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-83.5x83.5@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦       
+¦   ¦           ¦   ¦   ¦   ¦   ¦   +---LaunchImage.imageset
+¦   ¦           ¦   ¦   ¦   ¦   ¦           Contents.json
+¦   ¦           ¦   ¦   ¦   ¦   ¦           LaunchImage.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           LaunchImage@2x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           LaunchImage@3x.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           README.md
+¦   ¦           ¦   ¦   ¦   ¦   ¦           
+¦   ¦           ¦   ¦   ¦   ¦   +---Base.lproj
+¦   ¦           ¦   ¦   ¦   ¦           LaunchScreen.storyboard
+¦   ¦           ¦   ¦   ¦   ¦           Main.storyboard
+¦   ¦           ¦   ¦   ¦   ¦           
+¦   ¦           ¦   ¦   ¦   +---Runner.xcodeproj
+¦   ¦           ¦   ¦   ¦   ¦   ¦   project.pbxproj
+¦   ¦           ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   +---project.xcworkspace
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦   contents.xcworkspacedata
+¦   ¦           ¦   ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   ¦   +---xcshareddata
+¦   ¦           ¦   ¦   ¦   ¦   ¦       ¦   IDEWorkspaceChecks.plist
+¦   ¦           ¦   ¦   ¦   ¦   ¦       ¦   WorkspaceSettings.xcsettings
+¦   ¦           ¦   ¦   ¦   ¦   ¦       ¦   
+¦   ¦           ¦   ¦   ¦   ¦   ¦       +---swiftpm
+¦   ¦           ¦   ¦   ¦   ¦   ¦               Package.resolved
+¦   ¦           ¦   ¦   ¦   ¦   ¦               
+¦   ¦           ¦   ¦   ¦   ¦   +---xcshareddata
+¦   ¦           ¦   ¦   ¦   ¦       +---xcschemes
+¦   ¦           ¦   ¦   ¦   ¦               Runner.xcscheme
+¦   ¦           ¦   ¦   ¦   ¦               
+¦   ¦           ¦   ¦   ¦   +---Runner.xcworkspace
+¦   ¦           ¦   ¦   ¦       ¦   contents.xcworkspacedata
+¦   ¦           ¦   ¦   ¦       ¦   
+¦   ¦           ¦   ¦   ¦       +---xcshareddata
+¦   ¦           ¦   ¦   ¦               IDEWorkspaceChecks.plist
+¦   ¦           ¦   ¦   ¦               WorkspaceSettings.xcsettings
+¦   ¦           ¦   ¦   ¦               
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦   ¦   ¦   main.dart
+¦   ¦           ¦   ¦   ¦   ¦   main_desktop.dart
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---src
+¦   ¦           ¦   ¦   ¦           file_picker_demo.dart
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---linux
+¦   ¦           ¦   ¦   ¦   ¦   CMakeLists.txt
+¦   ¦           ¦   ¦   ¦   ¦   main.cc
+¦   ¦           ¦   ¦   ¦   ¦   my_application.cc
+¦   ¦           ¦   ¦   ¦   ¦   my_application.h
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---flutter
+¦   ¦           ¦   ¦   ¦           CMakeLists.txt
+¦   ¦           ¦   ¦   ¦           generated_plugins.cmake
+¦   ¦           ¦   ¦   ¦           generated_plugin_registrant.cc
+¦   ¦           ¦   ¦   ¦           generated_plugin_registrant.h
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---macos
+¦   ¦           ¦   ¦   ¦   +---Flutter
+¦   ¦           ¦   ¦   ¦   ¦       Flutter-Debug.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦       Flutter-Release.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦       
+¦   ¦           ¦   ¦   ¦   +---Runner
+¦   ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.swift
+¦   ¦           ¦   ¦   ¦   ¦   ¦   DebugProfile.entitlements
+¦   ¦           ¦   ¦   ¦   ¦   ¦   Info.plist
+¦   ¦           ¦   ¦   ¦   ¦   ¦   MainFlutterWindow.swift
+¦   ¦           ¦   ¦   ¦   ¦   ¦   Release.entitlements
+¦   ¦           ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   +---Assets.xcassets
+¦   ¦           ¦   ¦   ¦   ¦   ¦   +---AppIcon.appiconset
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_1024.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_128.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_16.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_256.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_32.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_512.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           app_icon_64.png
+¦   ¦           ¦   ¦   ¦   ¦   ¦           Contents.json
+¦   ¦           ¦   ¦   ¦   ¦   ¦           
+¦   ¦           ¦   ¦   ¦   ¦   +---Base.lproj
+¦   ¦           ¦   ¦   ¦   ¦   ¦       MainMenu.xib
+¦   ¦           ¦   ¦   ¦   ¦   ¦       
+¦   ¦           ¦   ¦   ¦   ¦   +---Configs
+¦   ¦           ¦   ¦   ¦   ¦           AppInfo.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦           Debug.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦           Release.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦           Warnings.xcconfig
+¦   ¦           ¦   ¦   ¦   ¦           
+¦   ¦           ¦   ¦   ¦   +---Runner.xcodeproj
+¦   ¦           ¦   ¦   ¦   ¦   ¦   project.pbxproj
+¦   ¦           ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   +---project.xcworkspace
+¦   ¦           ¦   ¦   ¦   ¦   ¦   +---xcshareddata
+¦   ¦           ¦   ¦   ¦   ¦   ¦           IDEWorkspaceChecks.plist
+¦   ¦           ¦   ¦   ¦   ¦   ¦           
+¦   ¦           ¦   ¦   ¦   ¦   +---xcshareddata
+¦   ¦           ¦   ¦   ¦   ¦       +---xcschemes
+¦   ¦           ¦   ¦   ¦   ¦               Runner.xcscheme
+¦   ¦           ¦   ¦   ¦   ¦               
+¦   ¦           ¦   ¦   ¦   +---Runner.xcworkspace
+¦   ¦           ¦   ¦   ¦   ¦   ¦   contents.xcworkspacedata
+¦   ¦           ¦   ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   ¦   +---xcshareddata
+¦   ¦           ¦   ¦   ¦   ¦           IDEWorkspaceChecks.plist
+¦   ¦           ¦   ¦   ¦   ¦           
+¦   ¦           ¦   ¦   ¦   +---RunnerTests
+¦   ¦           ¦   ¦   ¦           RunnerTests.swift
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---screenshots
+¦   ¦           ¦   ¦   ¦       example_android.gif
+¦   ¦           ¦   ¦   ¦       example_ios.gif
+¦   ¦           ¦   ¦   ¦       example_linux.gif
+¦   ¦           ¦   ¦   ¦       example_macos.gif
+¦   ¦           ¦   ¦   ¦       example_windows.gif
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---web
+¦   ¦           ¦   ¦   ¦   ¦   favicon.png
+¦   ¦           ¦   ¦   ¦   ¦   index.html
+¦   ¦           ¦   ¦   ¦   ¦   manifest.json
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---icons
+¦   ¦           ¦   ¦   ¦           Icon-192.png
+¦   ¦           ¦   ¦   ¦           Icon-512.png
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---windows
+¦   ¦           ¦   ¦       ¦   CMakeLists.txt
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---flutter
+¦   ¦           ¦   ¦       ¦       CMakeLists.txt
+¦   ¦           ¦   ¦       ¦       generated_plugins.cmake
+¦   ¦           ¦   ¦       ¦       generated_plugin_registrant.cc
+¦   ¦           ¦   ¦       ¦       generated_plugin_registrant.h
+¦   ¦           ¦   ¦       ¦       
+¦   ¦           ¦   ¦       +---runner
+¦   ¦           ¦   ¦           ¦   CMakeLists.txt
+¦   ¦           ¦   ¦           ¦   flutter_window.cpp
+¦   ¦           ¦   ¦           ¦   flutter_window.h
+¦   ¦           ¦   ¦           ¦   main.cpp
+¦   ¦           ¦   ¦           ¦   resource.h
+¦   ¦           ¦   ¦           ¦   runner.exe.manifest
+¦   ¦           ¦   ¦           ¦   Runner.rc
+¦   ¦           ¦   ¦           ¦   utils.cpp
+¦   ¦           ¦   ¦           ¦   utils.h
+¦   ¦           ¦   ¦           ¦   win32_window.cpp
+¦   ¦           ¦   ¦           ¦   win32_window.h
+¦   ¦           ¦   ¦           ¦   
+¦   ¦           ¦   ¦           +---resources
+¦   ¦           ¦   ¦                   app_icon.ico
+¦   ¦           ¦   ¦                   
+¦   ¦           ¦   +---ios
+¦   ¦           ¦   ¦   ¦   file_picker.podspec
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---file_picker
+¦   ¦           ¦   ¦       ¦   Package.resolved
+¦   ¦           ¦   ¦       ¦   Package.swift
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---Sources
+¦   ¦           ¦   ¦           +---file_picker
+¦   ¦           ¦   ¦               ¦   FileInfo.m
+¦   ¦           ¦   ¦               ¦   FilePickerPlugin.m
+¦   ¦           ¦   ¦               ¦   FileUtils.m
+¦   ¦           ¦   ¦               ¦   ImageUtils.m
+¦   ¦           ¦   ¦               ¦   PrivacyInfo.xcprivacy
+¦   ¦           ¦   ¦               ¦   
+¦   ¦           ¦   ¦               +---include
+¦   ¦           ¦   ¦                   ¦   file_picker-umbrella.h
+¦   ¦           ¦   ¦                   ¦   file_picker.modulemap
+¦   ¦           ¦   ¦                   ¦   
+¦   ¦           ¦   ¦                   +---file_picker
+¦   ¦           ¦   ¦                           FileInfo.h
+¦   ¦           ¦   ¦                           FilePickerPlugin.h
+¦   ¦           ¦   ¦                           FileUtils.h
+¦   ¦           ¦   ¦                           ImageUtils.h
+¦   ¦           ¦   ¦                           
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦   ¦   file_picker.dart
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦   ¦   ¦   exceptions.dart
+¦   ¦           ¦   ¦   ¦   ¦   file_picker.dart
+¦   ¦           ¦   ¦   ¦   ¦   file_picker_io.dart
+¦   ¦           ¦   ¦   ¦   ¦   file_picker_macos.dart
+¦   ¦           ¦   ¦   ¦   ¦   file_picker_result.dart
+¦   ¦           ¦   ¦   ¦   ¦   platform_file.dart
+¦   ¦           ¦   ¦   ¦   ¦   utils.dart
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---linux
+¦   ¦           ¦   ¦   ¦   ¦       file_picker_linux.dart
+¦   ¦           ¦   ¦   ¦   ¦       filters.dart
+¦   ¦           ¦   ¦   ¦   ¦       xdp_filechooser.dart
+¦   ¦           ¦   ¦   ¦   ¦       xdp_request.dart
+¦   ¦           ¦   ¦   ¦   ¦       
+¦   ¦           ¦   ¦   ¦   +---windows
+¦   ¦           ¦   ¦   ¦           file_picker_windows.dart
+¦   ¦           ¦   ¦   ¦           file_picker_windows_ffi_types.dart
+¦   ¦           ¦   ¦   ¦           file_picker_windows_stub.dart
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---_internal
+¦   ¦           ¦   ¦           file_picker_web.dart
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---macos
+¦   ¦           ¦   ¦   ¦   file_picker.podspec
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---file_picker
+¦   ¦           ¦   ¦       ¦   Package.swift
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---Sources
+¦   ¦           ¦   ¦           +---file_picker
+¦   ¦           ¦   ¦                   FilePickerPlugin.swift
+¦   ¦           ¦   ¦                   PrivacyInfo.xcprivacy
+¦   ¦           ¦   ¦                   
+¦   ¦           ¦   +---test
+¦   ¦           ¦       ¦   common.dart
+¦   ¦           ¦       ¦   file_picker_macos_test.dart
+¦   ¦           ¦       ¦   file_picker_utils_test.dart
+¦   ¦           ¦       ¦   file_picker_windows_test.dart
+¦   ¦           ¦       ¦   
+¦   ¦           ¦       +---linux
+¦   ¦           ¦       ¦       xdp_filter_test.dart
+¦   ¦           ¦       ¦       
+¦   ¦           ¦       +---test_files
+¦   ¦           ¦               franz-michael-schneeberger-unsplash.jpg
+¦   ¦           ¦               test.pdf
+¦   ¦           ¦               test.yml
+¦   ¦           ¦               
+¦   ¦           +---file_selector_linux
+¦   ¦           ¦   ¦   AUTHORS
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---example
+¦   ¦           ¦   ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   ¦   README.md
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦   ¦       get_directory_page.dart
+¦   ¦           ¦   ¦   ¦       get_multiple_directories_page.dart
+¦   ¦           ¦   ¦   ¦       home_page.dart
+¦   ¦           ¦   ¦   ¦       main.dart
+¦   ¦           ¦   ¦   ¦       open_image_page.dart
+¦   ¦           ¦   ¦   ¦       open_multiple_images_page.dart
+¦   ¦           ¦   ¦   ¦       open_text_page.dart
+¦   ¦           ¦   ¦   ¦       save_text_page.dart
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---linux
+¦   ¦           ¦   ¦       ¦   CMakeLists.txt
+¦   ¦           ¦   ¦       ¦   main.cc
+¦   ¦           ¦   ¦       ¦   my_application.cc
+¦   ¦           ¦   ¦       ¦   my_application.h
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---flutter
+¦   ¦           ¦   ¦               CMakeLists.txt
+¦   ¦           ¦   ¦               generated_plugins.cmake
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦   ¦   file_selector_linux.dart
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦           messages.g.dart
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---linux
+¦   ¦           ¦   ¦   ¦   CMakeLists.txt
+¦   ¦           ¦   ¦   ¦   file_selector_plugin.cc
+¦   ¦           ¦   ¦   ¦   file_selector_plugin_private.h
+¦   ¦           ¦   ¦   ¦   messages.g.cc
+¦   ¦           ¦   ¦   ¦   messages.g.h
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---include
+¦   ¦           ¦   ¦   ¦   +---file_selector_linux
+¦   ¦           ¦   ¦   ¦           file_selector_plugin.h
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---test
+¦   ¦           ¦   ¦           file_selector_plugin_test.cc
+¦   ¦           ¦   ¦           test_main.cc
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---pigeons
+¦   ¦           ¦   ¦       copyright.txt
+¦   ¦           ¦   ¦       messages.dart
+¦   ¦           ¦   ¦       
+¦   ¦           ¦   +---test
+¦   ¦           ¦           file_selector_linux_test.dart
+¦   ¦           ¦           
+¦   ¦           +---flutter_local_notifications_linux
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦   ¦   flutter_local_notifications_linux.dart
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦       ¦   dbus_wrapper.dart
+¦   ¦           ¦   ¦       ¦   file_system.dart
+¦   ¦           ¦   ¦       ¦   flutter_local_notifications.dart
+¦   ¦           ¦   ¦       ¦   flutter_local_notifications_platform_linux.dart
+¦   ¦           ¦   ¦       ¦   flutter_local_notifications_stub.dart
+¦   ¦           ¦   ¦       ¦   helpers.dart
+¦   ¦           ¦   ¦       ¦   notifications_manager.dart
+¦   ¦           ¦   ¦       ¦   notification_info.dart
+¦   ¦           ¦   ¦       ¦   platform_info.dart
+¦   ¦           ¦   ¦       ¦   posix.dart
+¦   ¦           ¦   ¦       ¦   storage.dart
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---model
+¦   ¦           ¦   ¦               capabilities.dart
+¦   ¦           ¦   ¦               enums.dart
+¦   ¦           ¦   ¦               hint.dart
+¦   ¦           ¦   ¦               icon.dart
+¦   ¦           ¦   ¦               initialization_settings.dart
+¦   ¦           ¦   ¦               location.dart
+¦   ¦           ¦   ¦               notification_details.dart
+¦   ¦           ¦   ¦               sound.dart
+¦   ¦           ¦   ¦               timeout.dart
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---test
+¦   ¦           ¦           notifications_manager_test.dart
+¦   ¦           ¦           notifications_manager_test.mocks.dart
+¦   ¦           ¦           posix_test.dart
+¦   ¦           ¦           storage_test.dart
+¦   ¦           ¦           storage_test.mocks.dart
+¦   ¦           ¦           
+¦   ¦           +---image_picker_linux
+¦   ¦           ¦   ¦   AUTHORS
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---example
+¦   ¦           ¦   ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   ¦   README.md
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦   ¦       main.dart
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---linux
+¦   ¦           ¦   ¦       ¦   CMakeLists.txt
+¦   ¦           ¦   ¦       ¦   main.cc
+¦   ¦           ¦   ¦       ¦   my_application.cc
+¦   ¦           ¦   ¦       ¦   my_application.h
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---flutter
+¦   ¦           ¦   ¦               CMakeLists.txt
+¦   ¦           ¦   ¦               generated_plugins.cmake
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦       image_picker_linux.dart
+¦   ¦           ¦   ¦       
+¦   ¦           ¦   +---test
+¦   ¦           ¦           image_picker_linux_test.dart
+¦   ¦           ¦           image_picker_linux_test.mocks.dart
+¦   ¦           ¦           
+¦   ¦           +---open_file_linux
+¦   ¦           ¦   ¦   analysis_options.yaml
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   open_file_linux.iml
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦       open_file_linux.dart
+¦   ¦           ¦   ¦       parse_args.dart
+¦   ¦           ¦   ¦       
+¦   ¦           ¦   +---linux
+¦   ¦           ¦   ¦   ¦   CMakeLists.txt
+¦   ¦           ¦   ¦   ¦   open_file_linux_plugin.cc
+¦   ¦           ¦   ¦   ¦   open_file_linux_plugin_private.h
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---include
+¦   ¦           ¦   ¦   ¦   +---open_file_linux
+¦   ¦           ¦   ¦   ¦           open_file_linux_plugin.h
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---test
+¦   ¦           ¦   ¦           open_file_linux_plugin_test.cc
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---test
+¦   ¦           ¦           open_file_linux_test.dart
+¦   ¦           ¦           
+¦   ¦           +---path_provider_linux
+¦   ¦           ¦   ¦   AUTHORS
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---example
+¦   ¦           ¦   ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   ¦   README.md
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---integration_test
+¦   ¦           ¦   ¦   ¦       path_provider_test.dart
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦   ¦       main.dart
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---linux
+¦   ¦           ¦   ¦   ¦   ¦   CMakeLists.txt
+¦   ¦           ¦   ¦   ¦   ¦   main.cc
+¦   ¦           ¦   ¦   ¦   ¦   my_application.cc
+¦   ¦           ¦   ¦   ¦   ¦   my_application.h
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---flutter
+¦   ¦           ¦   ¦   ¦           CMakeLists.txt
+¦   ¦           ¦   ¦   ¦           generated_plugins.cmake
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---test_driver
+¦   ¦           ¦   ¦           integration_test.dart
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦   ¦   path_provider_linux.dart
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦           get_application_id.dart
+¦   ¦           ¦   ¦           get_application_id_real.dart
+¦   ¦           ¦   ¦           get_application_id_stub.dart
+¦   ¦           ¦   ¦           path_provider_linux.dart
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---test
+¦   ¦           ¦           get_application_id_test.dart
+¦   ¦           ¦           path_provider_linux_test.dart
+¦   ¦           ¦           
+¦   ¦           +---printing
+¦   ¦           ¦   ¦   analysis_options.yaml
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   CONTRIBUTING.md
+¦   ¦           ¦   ¦   example.png
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---android
+¦   ¦           ¦   ¦   ¦   build.gradle
+¦   ¦           ¦   ¦   ¦   settings.gradle
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦       +---main
+¦   ¦           ¦   ¦           ¦   AndroidManifest.xml
+¦   ¦           ¦   ¦           ¦   
+¦   ¦           ¦   ¦           +---java
+¦   ¦           ¦   ¦           ¦   +---android
+¦   ¦           ¦   ¦           ¦   ¦   +---print
+¦   ¦           ¦   ¦           ¦   ¦           PdfConvert.java
+¦   ¦           ¦   ¦           ¦   ¦           
+¦   ¦           ¦   ¦           ¦   +---net
+¦   ¦           ¦   ¦           ¦       +---nfet
+¦   ¦           ¦   ¦           ¦           +---flutter
+¦   ¦           ¦   ¦           ¦               +---printing
+¦   ¦           ¦   ¦           ¦                       PrintFileProvider.java
+¦   ¦           ¦   ¦           ¦                       PrintingHandler.java
+¦   ¦           ¦   ¦           ¦                       PrintingJob.java
+¦   ¦           ¦   ¦           ¦                       PrintingPlugin.java
+¦   ¦           ¦   ¦           ¦                       
+¦   ¦           ¦   ¦           +---res
+¦   ¦           ¦   ¦               +---xml
+¦   ¦           ¦   ¦                       flutter_printing_file_paths.xml
+¦   ¦           ¦   ¦                       
+¦   ¦           ¦   +---example
+¦   ¦           ¦   ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦           main.dart
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---ios
+¦   ¦           ¦   ¦   ¦   printing.podspec
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---Classes
+¦   ¦           ¦   ¦           CustomPrintPaper.swift
+¦   ¦           ¦   ¦           PrintingPlugin.m
+¦   ¦           ¦   ¦           PrintingPlugin.swift
+¦   ¦           ¦   ¦           PrintJob.swift
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦   ¦   printing.dart
+¦   ¦           ¦   ¦   ¦   printing_web.dart
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---src
+¦   ¦           ¦   ¦       ¦   asset_utils.dart
+¦   ¦           ¦   ¦       ¦   cache.dart
+¦   ¦           ¦   ¦       ¦   callback.dart
+¦   ¦           ¦   ¦       ¦   interface.dart
+¦   ¦           ¦   ¦       ¦   method_channel.dart
+¦   ¦           ¦   ¦       ¦   method_channel_ffi.dart
+¦   ¦           ¦   ¦       ¦   method_channel_js.dart
+¦   ¦           ¦   ¦       ¦   mutex.dart
+¦   ¦           ¦   ¦       ¦   output_type.dart
+¦   ¦           ¦   ¦       ¦   pdfjs.dart
+¦   ¦           ¦   ¦       ¦   platform_js.dart
+¦   ¦           ¦   ¦       ¦   platform_os.dart
+¦   ¦           ¦   ¦       ¦   printer.dart
+¦   ¦           ¦   ¦       ¦   printing.dart
+¦   ¦           ¦   ¦       ¦   printing_info.dart
+¦   ¦           ¦   ¦       ¦   print_job.dart
+¦   ¦           ¦   ¦       ¦   raster.dart
+¦   ¦           ¦   ¦       ¦   
+¦   ¦           ¦   ¦       +---fonts
+¦   ¦           ¦   ¦       ¦       font.dart
+¦   ¦           ¦   ¦       ¦       gfonts.dart
+¦   ¦           ¦   ¦       ¦       manifest.dart
+¦   ¦           ¦   ¦       ¦       
+¦   ¦           ¦   ¦       +---preview
+¦   ¦           ¦   ¦               actions.dart
+¦   ¦           ¦   ¦               action_bar_theme.dart
+¦   ¦           ¦   ¦               controller.dart
+¦   ¦           ¦   ¦               custom.dart
+¦   ¦           ¦   ¦               page.dart
+¦   ¦           ¦   ¦               pdf_preview.dart
+¦   ¦           ¦   ¦               raster.dart
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---linux
+¦   ¦           ¦   ¦   ¦   CMakeLists.txt
+¦   ¦           ¦   ¦   ¦   printing_plugin.cc
+¦   ¦           ¦   ¦   ¦   print_job.cc
+¦   ¦           ¦   ¦   ¦   print_job.h
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---include
+¦   ¦           ¦   ¦       +---printing
+¦   ¦           ¦   ¦               printing_plugin.h
+¦   ¦           ¦   ¦               
+¦   ¦           ¦   +---macos
+¦   ¦           ¦   ¦   ¦   printing.podspec
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---Classes
+¦   ¦           ¦   ¦           PrintingPlugin.m
+¦   ¦           ¦   ¦           PrintingPlugin.swift
+¦   ¦           ¦   ¦           PrintJob.swift
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---test
+¦   ¦           ¦   ¦       document_test.dart
+¦   ¦           ¦   ¦       info_test.dart
+¦   ¦           ¦   ¦       printing_test.dart
+¦   ¦           ¦   ¦       raster_test.dart
+¦   ¦           ¦   ¦       
+¦   ¦           ¦   +---windows
+¦   ¦           ¦       ¦   CMakeLists.txt
+¦   ¦           ¦       ¦   DownloadProject.cmake
+¦   ¦           ¦       ¦   DownloadProject.CMakeLists.cmake.in
+¦   ¦           ¦       ¦   printing.cpp
+¦   ¦           ¦       ¦   printing.h
+¦   ¦           ¦       ¦   printing_plugin.cpp
+¦   ¦           ¦       ¦   print_job.cpp
+¦   ¦           ¦       ¦   print_job.h
+¦   ¦           ¦       ¦   
+¦   ¦           ¦       +---include
+¦   ¦           ¦           +---printing
+¦   ¦           ¦                   printing_plugin.h
+¦   ¦           ¦                   
+¦   ¦           +---shared_preferences_linux
+¦   ¦           ¦   ¦   AUTHORS
+¦   ¦           ¦   ¦   CHANGELOG.md
+¦   ¦           ¦   ¦   LICENSE
+¦   ¦           ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   README.md
+¦   ¦           ¦   ¦   
+¦   ¦           ¦   +---example
+¦   ¦           ¦   ¦   ¦   pubspec.yaml
+¦   ¦           ¦   ¦   ¦   README.md
+¦   ¦           ¦   ¦   ¦   
+¦   ¦           ¦   ¦   +---integration_test
+¦   ¦           ¦   ¦   ¦       shared_preferences_test.dart
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---lib
+¦   ¦           ¦   ¦   ¦       main.dart
+¦   ¦           ¦   ¦   ¦       
+¦   ¦           ¦   ¦   +---linux
+¦   ¦           ¦   ¦   ¦   ¦   CMakeLists.txt
+¦   ¦           ¦   ¦   ¦   ¦   main.cc
+¦   ¦           ¦   ¦   ¦   ¦   my_application.cc
+¦   ¦           ¦   ¦   ¦   ¦   my_application.h
+¦   ¦           ¦   ¦   ¦   ¦   
+¦   ¦           ¦   ¦   ¦   +---flutter
+¦   ¦           ¦   ¦   ¦           CMakeLists.txt
+¦   ¦           ¦   ¦   ¦           generated_plugins.cmake
+¦   ¦           ¦   ¦   ¦           
+¦   ¦           ¦   ¦   +---test_driver
+¦   ¦           ¦   ¦           integration_test.dart
+¦   ¦           ¦   ¦           
+¦   ¦           ¦   +---lib
+¦   ¦           ¦   ¦       shared_preferences_linux.dart
+¦   ¦           ¦   ¦       
+¦   ¦           ¦   +---test
+¦   ¦           ¦           fake_path_provider_linux.dart
+¦   ¦           ¦           legacy_shared_preferences_linux_test.dart
+¦   ¦           ¦           shared_preferences_linux_async_test.dart
+¦   ¦           ¦           
+¦   ¦           +---url_launcher_linux
+¦   ¦               ¦   AUTHORS
+¦   ¦               ¦   CHANGELOG.md
+¦   ¦               ¦   LICENSE
+¦   ¦               ¦   pubspec.yaml
+¦   ¦               ¦   README.md
+¦   ¦               ¦   
+¦   ¦               +---example
+¦   ¦               ¦   ¦   pubspec.yaml
+¦   ¦               ¦   ¦   README.md
+¦   ¦               ¦   ¦   
+¦   ¦               ¦   +---integration_test
+¦   ¦               ¦   ¦       url_launcher_test.dart
+¦   ¦               ¦   ¦       
+¦   ¦               ¦   +---lib
+¦   ¦               ¦   ¦       main.dart
+¦   ¦               ¦   ¦       
+¦   ¦               ¦   +---linux
+¦   ¦               ¦   ¦   ¦   CMakeLists.txt
+¦   ¦               ¦   ¦   ¦   main.cc
+¦   ¦               ¦   ¦   ¦   my_application.cc
+¦   ¦               ¦   ¦   ¦   my_application.h
+¦   ¦               ¦   ¦   ¦   
+¦   ¦               ¦   ¦   +---flutter
+¦   ¦               ¦   ¦           CMakeLists.txt
+¦   ¦               ¦   ¦           generated_plugins.cmake
+¦   ¦               ¦   ¦           
+¦   ¦               ¦   +---test_driver
+¦   ¦               ¦           integration_test.dart
+¦   ¦               ¦           
+¦   ¦               +---lib
+¦   ¦               ¦   ¦   url_launcher_linux.dart
+¦   ¦               ¦   ¦   
+¦   ¦               ¦   +---src
+¦   ¦               ¦           messages.g.dart
+¦   ¦               ¦           
+¦   ¦               +---linux
+¦   ¦               ¦   ¦   CMakeLists.txt
+¦   ¦               ¦   ¦   messages.g.cc
+¦   ¦               ¦   ¦   messages.g.h
+¦   ¦               ¦   ¦   url_launcher_plugin.cc
+¦   ¦               ¦   ¦   url_launcher_plugin_private.h
+¦   ¦               ¦   ¦   
+¦   ¦               ¦   +---include
+¦   ¦               ¦   ¦   +---url_launcher_linux
+¦   ¦               ¦   ¦           url_launcher_plugin.h
+¦   ¦               ¦   ¦           
+¦   ¦               ¦   +---test
+¦   ¦               ¦           url_launcher_linux_test.cc
+¦   ¦               ¦           
+¦   ¦               +---pigeons
+¦   ¦               ¦       copyright.txt
+¦   ¦               ¦       messages.dart
+¦   ¦               ¦       
+¦   ¦               +---test
+¦   ¦                       url_launcher_linux_test.dart
+¦   ¦                       
+¦   +---runner
+¦           CMakeLists.txt
+¦           main.cc
+¦           my_application.cc
+¦           my_application.h
+¦           
++---macos
+¦   ¦   .gitignore
+¦   ¦   
+¦   +---Flutter
+¦   ¦   ¦   Flutter-Debug.xcconfig
+¦   ¦   ¦   Flutter-Release.xcconfig
+¦   ¦   ¦   GeneratedPluginRegistrant.swift
+¦   ¦   ¦   
+¦   ¦   +---ephemeral
+¦   ¦           Flutter-Generated.xcconfig
+¦   ¦           flutter_export_environment.sh
+¦   ¦           
+¦   +---Runner
+¦   ¦   ¦   AppDelegate.swift
+¦   ¦   ¦   DebugProfile.entitlements
+¦   ¦   ¦   Info.plist
+¦   ¦   ¦   MainFlutterWindow.swift
+¦   ¦   ¦   Release.entitlements
+¦   ¦   ¦   
+¦   ¦   +---Assets.xcassets
+¦   ¦   ¦   +---AppIcon.appiconset
+¦   ¦   ¦           app_icon_1024.png
+¦   ¦   ¦           app_icon_128.png
+¦   ¦   ¦           app_icon_16.png
+¦   ¦   ¦           app_icon_256.png
+¦   ¦   ¦           app_icon_32.png
+¦   ¦   ¦           app_icon_512.png
+¦   ¦   ¦           app_icon_64.png
+¦   ¦   ¦           Contents.json
+¦   ¦   ¦           
+¦   ¦   +---Base.lproj
+¦   ¦   ¦       MainMenu.xib
+¦   ¦   ¦       
+¦   ¦   +---Configs
+¦   ¦           AppInfo.xcconfig
+¦   ¦           Debug.xcconfig
+¦   ¦           Release.xcconfig
+¦   ¦           Warnings.xcconfig
+¦   ¦           
+¦   +---Runner.xcodeproj
+¦   ¦   ¦   project.pbxproj
+¦   ¦   ¦   
+¦   ¦   +---project.xcworkspace
+¦   ¦   ¦   +---xcshareddata
+¦   ¦   ¦           IDEWorkspaceChecks.plist
+¦   ¦   ¦           
+¦   ¦   +---xcshareddata
+¦   ¦       +---xcschemes
+¦   ¦               Runner.xcscheme
+¦   ¦               
+¦   +---Runner.xcworkspace
+¦   ¦   ¦   contents.xcworkspacedata
+¦   ¦   ¦   
+¦   ¦   +---xcshareddata
+¦   ¦           IDEWorkspaceChecks.plist
+¦   ¦           
+¦   +---RunnerTests
+¦           RunnerTests.swift
+¦           
++---test
+¦       widget_test.dart
+¦       
++---web
+¦   ¦   favicon.png
+¦   ¦   index.html
+¦   ¦   manifest.json
+¦   ¦   
+¦   +---icons
+¦           Icon-192.png
+¦           Icon-512.png
+¦           Icon-maskable-192.png
+¦           Icon-maskable-512.png
+¦           
++---windows
+    ¦   .gitignore
+    ¦   CMakeLists.txt
+    ¦   
+    +---flutter
+    ¦   ¦   CMakeLists.txt
+    ¦   ¦   generated_plugins.cmake
+    ¦   ¦   generated_plugin_registrant.cc
+    ¦   ¦   generated_plugin_registrant.h
+    ¦   ¦   
+    ¦   +---ephemeral
+    ¦       +---.plugin_symlinks
+    ¦           +---file_picker
+    ¦           ¦   ¦   analysis_options.yaml
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   CONTRIBUTING.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---android
+    ¦           ¦   ¦   ¦   build.gradle
+    ¦           ¦   ¦   ¦   proguard-rules.pro
+    ¦           ¦   ¦   ¦   settings.gradle
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---gradle
+    ¦           ¦   ¦   ¦   +---wrapper
+    ¦           ¦   ¦   ¦           gradle-wrapper.properties
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦       +---main
+    ¦           ¦   ¦           ¦   AndroidManifest.xml
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---kotlin
+    ¦           ¦   ¦               +---com
+    ¦           ¦   ¦                   +---mr
+    ¦           ¦   ¦                       +---flutter
+    ¦           ¦   ¦                           +---plugin
+    ¦           ¦   ¦                               +---filepicker
+    ¦           ¦   ¦                                       FileInfo.kt
+    ¦           ¦   ¦                                       FilePickerDelegate.kt
+    ¦           ¦   ¦                                       FilePickerPlugin.kt
+    ¦           ¦   ¦                                       FileUtils.kt
+    ¦           ¦   ¦                                       MethodResultWrapper.kt
+    ¦           ¦   ¦                                       
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   analysis_options.yaml
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   README.md
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---android
+    ¦           ¦   ¦   ¦   ¦   build.gradle.kts
+    ¦           ¦   ¦   ¦   ¦   gradle.properties
+    ¦           ¦   ¦   ¦   ¦   settings.gradle.kts
+    ¦           ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   +---app
+    ¦           ¦   ¦   ¦   ¦   ¦   build.gradle.kts
+    ¦           ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   +---src
+    ¦           ¦   ¦   ¦   ¦       +---debug
+    ¦           ¦   ¦   ¦   ¦       ¦       AndroidManifest.xml
+    ¦           ¦   ¦   ¦   ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       +---main
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦   AndroidManifest.xml
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦       ¦   +---kotlin
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦   +---com
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦       +---mr
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦           +---flutter
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦               +---plugin
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦                   +---filepicker
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦                       +---file_picker_example
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦                               MainActivity.kt
+    ¦           ¦   ¦   ¦   ¦       ¦   ¦                               
+    ¦           ¦   ¦   ¦   ¦       ¦   +---res
+    ¦           ¦   ¦   ¦   ¦       ¦       +---drawable
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       launch_background.xml
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---drawable-v21
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       launch_background.xml
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-hdpi
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-mdpi
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-xhdpi
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-xxhdpi
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---mipmap-xxxhdpi
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       ic_launcher.png
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---values
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       styles.xml
+    ¦           ¦   ¦   ¦   ¦       ¦       ¦       
+    ¦           ¦   ¦   ¦   ¦       ¦       +---values-night
+    ¦           ¦   ¦   ¦   ¦       ¦               styles.xml
+    ¦           ¦   ¦   ¦   ¦       ¦               
+    ¦           ¦   ¦   ¦   ¦       +---profile
+    ¦           ¦   ¦   ¦   ¦               AndroidManifest.xml
+    ¦           ¦   ¦   ¦   ¦               
+    ¦           ¦   ¦   ¦   +---gradle
+    ¦           ¦   ¦   ¦       +---wrapper
+    ¦           ¦   ¦   ¦               gradle-wrapper.properties
+    ¦           ¦   ¦   ¦               
+    ¦           ¦   ¦   +---ios
+    ¦           ¦   ¦   ¦   ¦   gpxgenerator_path.gpx
+    ¦           ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   +---Flutter
+    ¦           ¦   ¦   ¦   ¦       AppFrameworkInfo.plist
+    ¦           ¦   ¦   ¦   ¦       Debug.xcconfig
+    ¦           ¦   ¦   ¦   ¦       Release.xcconfig
+    ¦           ¦   ¦   ¦   ¦       
+    ¦           ¦   ¦   ¦   +---Runner
+    ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.h
+    ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.m
+    ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.swift
+    ¦           ¦   ¦   ¦   ¦   ¦   File.swift
+    ¦           ¦   ¦   ¦   ¦   ¦   Info.plist
+    ¦           ¦   ¦   ¦   ¦   ¦   main.m
+    ¦           ¦   ¦   ¦   ¦   ¦   Runner-Bridging-Header.h
+    ¦           ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   +---Assets.xcassets
+    ¦           ¦   ¦   ¦   ¦   ¦   +---AppIcon.appiconset
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Contents.json
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-1024x1024@1x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-20x20@1x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-20x20@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-20x20@3x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-29x29@1x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-29x29@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-29x29@3x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-40x40@1x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-40x40@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-40x40@3x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-60x60@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-60x60@3x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-76x76@1x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-76x76@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       Icon-App-83.5x83.5@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦       
+    ¦           ¦   ¦   ¦   ¦   ¦   +---LaunchImage.imageset
+    ¦           ¦   ¦   ¦   ¦   ¦           Contents.json
+    ¦           ¦   ¦   ¦   ¦   ¦           LaunchImage.png
+    ¦           ¦   ¦   ¦   ¦   ¦           LaunchImage@2x.png
+    ¦           ¦   ¦   ¦   ¦   ¦           LaunchImage@3x.png
+    ¦           ¦   ¦   ¦   ¦   ¦           README.md
+    ¦           ¦   ¦   ¦   ¦   ¦           
+    ¦           ¦   ¦   ¦   ¦   +---Base.lproj
+    ¦           ¦   ¦   ¦   ¦           LaunchScreen.storyboard
+    ¦           ¦   ¦   ¦   ¦           Main.storyboard
+    ¦           ¦   ¦   ¦   ¦           
+    ¦           ¦   ¦   ¦   +---Runner.xcodeproj
+    ¦           ¦   ¦   ¦   ¦   ¦   project.pbxproj
+    ¦           ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   +---project.xcworkspace
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦   contents.xcworkspacedata
+    ¦           ¦   ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   ¦   +---xcshareddata
+    ¦           ¦   ¦   ¦   ¦   ¦       ¦   IDEWorkspaceChecks.plist
+    ¦           ¦   ¦   ¦   ¦   ¦       ¦   WorkspaceSettings.xcsettings
+    ¦           ¦   ¦   ¦   ¦   ¦       ¦   
+    ¦           ¦   ¦   ¦   ¦   ¦       +---swiftpm
+    ¦           ¦   ¦   ¦   ¦   ¦               Package.resolved
+    ¦           ¦   ¦   ¦   ¦   ¦               
+    ¦           ¦   ¦   ¦   ¦   +---xcshareddata
+    ¦           ¦   ¦   ¦   ¦       +---xcschemes
+    ¦           ¦   ¦   ¦   ¦               Runner.xcscheme
+    ¦           ¦   ¦   ¦   ¦               
+    ¦           ¦   ¦   ¦   +---Runner.xcworkspace
+    ¦           ¦   ¦   ¦       ¦   contents.xcworkspacedata
+    ¦           ¦   ¦   ¦       ¦   
+    ¦           ¦   ¦   ¦       +---xcshareddata
+    ¦           ¦   ¦   ¦               IDEWorkspaceChecks.plist
+    ¦           ¦   ¦   ¦               WorkspaceSettings.xcsettings
+    ¦           ¦   ¦   ¦               
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦   ¦   ¦   main.dart
+    ¦           ¦   ¦   ¦   ¦   main_desktop.dart
+    ¦           ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   +---src
+    ¦           ¦   ¦   ¦           file_picker_demo.dart
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---linux
+    ¦           ¦   ¦   ¦   ¦   CMakeLists.txt
+    ¦           ¦   ¦   ¦   ¦   main.cc
+    ¦           ¦   ¦   ¦   ¦   my_application.cc
+    ¦           ¦   ¦   ¦   ¦   my_application.h
+    ¦           ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   +---flutter
+    ¦           ¦   ¦   ¦           CMakeLists.txt
+    ¦           ¦   ¦   ¦           generated_plugins.cmake
+    ¦           ¦   ¦   ¦           generated_plugin_registrant.cc
+    ¦           ¦   ¦   ¦           generated_plugin_registrant.h
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---macos
+    ¦           ¦   ¦   ¦   +---Flutter
+    ¦           ¦   ¦   ¦   ¦       Flutter-Debug.xcconfig
+    ¦           ¦   ¦   ¦   ¦       Flutter-Release.xcconfig
+    ¦           ¦   ¦   ¦   ¦       
+    ¦           ¦   ¦   ¦   +---Runner
+    ¦           ¦   ¦   ¦   ¦   ¦   AppDelegate.swift
+    ¦           ¦   ¦   ¦   ¦   ¦   DebugProfile.entitlements
+    ¦           ¦   ¦   ¦   ¦   ¦   Info.plist
+    ¦           ¦   ¦   ¦   ¦   ¦   MainFlutterWindow.swift
+    ¦           ¦   ¦   ¦   ¦   ¦   Release.entitlements
+    ¦           ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   +---Assets.xcassets
+    ¦           ¦   ¦   ¦   ¦   ¦   +---AppIcon.appiconset
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_1024.png
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_128.png
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_16.png
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_256.png
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_32.png
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_512.png
+    ¦           ¦   ¦   ¦   ¦   ¦           app_icon_64.png
+    ¦           ¦   ¦   ¦   ¦   ¦           Contents.json
+    ¦           ¦   ¦   ¦   ¦   ¦           
+    ¦           ¦   ¦   ¦   ¦   +---Base.lproj
+    ¦           ¦   ¦   ¦   ¦   ¦       MainMenu.xib
+    ¦           ¦   ¦   ¦   ¦   ¦       
+    ¦           ¦   ¦   ¦   ¦   +---Configs
+    ¦           ¦   ¦   ¦   ¦           AppInfo.xcconfig
+    ¦           ¦   ¦   ¦   ¦           Debug.xcconfig
+    ¦           ¦   ¦   ¦   ¦           Release.xcconfig
+    ¦           ¦   ¦   ¦   ¦           Warnings.xcconfig
+    ¦           ¦   ¦   ¦   ¦           
+    ¦           ¦   ¦   ¦   +---Runner.xcodeproj
+    ¦           ¦   ¦   ¦   ¦   ¦   project.pbxproj
+    ¦           ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   +---project.xcworkspace
+    ¦           ¦   ¦   ¦   ¦   ¦   +---xcshareddata
+    ¦           ¦   ¦   ¦   ¦   ¦           IDEWorkspaceChecks.plist
+    ¦           ¦   ¦   ¦   ¦   ¦           
+    ¦           ¦   ¦   ¦   ¦   +---xcshareddata
+    ¦           ¦   ¦   ¦   ¦       +---xcschemes
+    ¦           ¦   ¦   ¦   ¦               Runner.xcscheme
+    ¦           ¦   ¦   ¦   ¦               
+    ¦           ¦   ¦   ¦   +---Runner.xcworkspace
+    ¦           ¦   ¦   ¦   ¦   ¦   contents.xcworkspacedata
+    ¦           ¦   ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   ¦   +---xcshareddata
+    ¦           ¦   ¦   ¦   ¦           IDEWorkspaceChecks.plist
+    ¦           ¦   ¦   ¦   ¦           
+    ¦           ¦   ¦   ¦   +---RunnerTests
+    ¦           ¦   ¦   ¦           RunnerTests.swift
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---screenshots
+    ¦           ¦   ¦   ¦       example_android.gif
+    ¦           ¦   ¦   ¦       example_ios.gif
+    ¦           ¦   ¦   ¦       example_linux.gif
+    ¦           ¦   ¦   ¦       example_macos.gif
+    ¦           ¦   ¦   ¦       example_windows.gif
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---web
+    ¦           ¦   ¦   ¦   ¦   favicon.png
+    ¦           ¦   ¦   ¦   ¦   index.html
+    ¦           ¦   ¦   ¦   ¦   manifest.json
+    ¦           ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   +---icons
+    ¦           ¦   ¦   ¦           Icon-192.png
+    ¦           ¦   ¦   ¦           Icon-512.png
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---windows
+    ¦           ¦   ¦       ¦   CMakeLists.txt
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---flutter
+    ¦           ¦   ¦       ¦       CMakeLists.txt
+    ¦           ¦   ¦       ¦       generated_plugins.cmake
+    ¦           ¦   ¦       ¦       generated_plugin_registrant.cc
+    ¦           ¦   ¦       ¦       generated_plugin_registrant.h
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---runner
+    ¦           ¦   ¦           ¦   CMakeLists.txt
+    ¦           ¦   ¦           ¦   flutter_window.cpp
+    ¦           ¦   ¦           ¦   flutter_window.h
+    ¦           ¦   ¦           ¦   main.cpp
+    ¦           ¦   ¦           ¦   resource.h
+    ¦           ¦   ¦           ¦   runner.exe.manifest
+    ¦           ¦   ¦           ¦   Runner.rc
+    ¦           ¦   ¦           ¦   utils.cpp
+    ¦           ¦   ¦           ¦   utils.h
+    ¦           ¦   ¦           ¦   win32_window.cpp
+    ¦           ¦   ¦           ¦   win32_window.h
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---resources
+    ¦           ¦   ¦                   app_icon.ico
+    ¦           ¦   ¦                   
+    ¦           ¦   +---ios
+    ¦           ¦   ¦   ¦   file_picker.podspec
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---file_picker
+    ¦           ¦   ¦       ¦   Package.resolved
+    ¦           ¦   ¦       ¦   Package.swift
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---Sources
+    ¦           ¦   ¦           +---file_picker
+    ¦           ¦   ¦               ¦   FileInfo.m
+    ¦           ¦   ¦               ¦   FilePickerPlugin.m
+    ¦           ¦   ¦               ¦   FileUtils.m
+    ¦           ¦   ¦               ¦   ImageUtils.m
+    ¦           ¦   ¦               ¦   PrivacyInfo.xcprivacy
+    ¦           ¦   ¦               ¦   
+    ¦           ¦   ¦               +---include
+    ¦           ¦   ¦                   ¦   file_picker-umbrella.h
+    ¦           ¦   ¦                   ¦   file_picker.modulemap
+    ¦           ¦   ¦                   ¦   
+    ¦           ¦   ¦                   +---file_picker
+    ¦           ¦   ¦                           FileInfo.h
+    ¦           ¦   ¦                           FilePickerPlugin.h
+    ¦           ¦   ¦                           FileUtils.h
+    ¦           ¦   ¦                           ImageUtils.h
+    ¦           ¦   ¦                           
+    ¦           ¦   +---lib
+    ¦           ¦   ¦   ¦   file_picker.dart
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦   ¦   ¦   exceptions.dart
+    ¦           ¦   ¦   ¦   ¦   file_picker.dart
+    ¦           ¦   ¦   ¦   ¦   file_picker_io.dart
+    ¦           ¦   ¦   ¦   ¦   file_picker_macos.dart
+    ¦           ¦   ¦   ¦   ¦   file_picker_result.dart
+    ¦           ¦   ¦   ¦   ¦   platform_file.dart
+    ¦           ¦   ¦   ¦   ¦   utils.dart
+    ¦           ¦   ¦   ¦   ¦   
+    ¦           ¦   ¦   ¦   +---linux
+    ¦           ¦   ¦   ¦   ¦       file_picker_linux.dart
+    ¦           ¦   ¦   ¦   ¦       filters.dart
+    ¦           ¦   ¦   ¦   ¦       xdp_filechooser.dart
+    ¦           ¦   ¦   ¦   ¦       xdp_request.dart
+    ¦           ¦   ¦   ¦   ¦       
+    ¦           ¦   ¦   ¦   +---windows
+    ¦           ¦   ¦   ¦           file_picker_windows.dart
+    ¦           ¦   ¦   ¦           file_picker_windows_ffi_types.dart
+    ¦           ¦   ¦   ¦           file_picker_windows_stub.dart
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---_internal
+    ¦           ¦   ¦           file_picker_web.dart
+    ¦           ¦   ¦           
+    ¦           ¦   +---macos
+    ¦           ¦   ¦   ¦   file_picker.podspec
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---file_picker
+    ¦           ¦   ¦       ¦   Package.swift
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---Sources
+    ¦           ¦   ¦           +---file_picker
+    ¦           ¦   ¦                   FilePickerPlugin.swift
+    ¦           ¦   ¦                   PrivacyInfo.xcprivacy
+    ¦           ¦   ¦                   
+    ¦           ¦   +---test
+    ¦           ¦       ¦   common.dart
+    ¦           ¦       ¦   file_picker_macos_test.dart
+    ¦           ¦       ¦   file_picker_utils_test.dart
+    ¦           ¦       ¦   file_picker_windows_test.dart
+    ¦           ¦       ¦   
+    ¦           ¦       +---linux
+    ¦           ¦       ¦       xdp_filter_test.dart
+    ¦           ¦       ¦       
+    ¦           ¦       +---test_files
+    ¦           ¦               franz-michael-schneeberger-unsplash.jpg
+    ¦           ¦               test.pdf
+    ¦           ¦               test.yml
+    ¦           ¦               
+    ¦           +---file_selector_windows
+    ¦           ¦   ¦   AUTHORS
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   README.md
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦   ¦       get_directory_page.dart
+    ¦           ¦   ¦   ¦       get_multiple_directories_page.dart
+    ¦           ¦   ¦   ¦       home_page.dart
+    ¦           ¦   ¦   ¦       main.dart
+    ¦           ¦   ¦   ¦       open_image_page.dart
+    ¦           ¦   ¦   ¦       open_multiple_images_page.dart
+    ¦           ¦   ¦   ¦       open_text_page.dart
+    ¦           ¦   ¦   ¦       save_text_page.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---windows
+    ¦           ¦   ¦       ¦   CMakeLists.txt
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---flutter
+    ¦           ¦   ¦       ¦       CMakeLists.txt
+    ¦           ¦   ¦       ¦       generated_plugins.cmake
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---runner
+    ¦           ¦   ¦           ¦   CMakeLists.txt
+    ¦           ¦   ¦           ¦   flutter_window.cpp
+    ¦           ¦   ¦           ¦   flutter_window.h
+    ¦           ¦   ¦           ¦   main.cpp
+    ¦           ¦   ¦           ¦   resource.h
+    ¦           ¦   ¦           ¦   runner.exe.manifest
+    ¦           ¦   ¦           ¦   Runner.rc
+    ¦           ¦   ¦           ¦   utils.cpp
+    ¦           ¦   ¦           ¦   utils.h
+    ¦           ¦   ¦           ¦   win32_window.cpp
+    ¦           ¦   ¦           ¦   win32_window.h
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---resources
+    ¦           ¦   ¦                   app_icon.ico
+    ¦           ¦   ¦                   
+    ¦           ¦   +---lib
+    ¦           ¦   ¦   ¦   file_selector_windows.dart
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦           messages.g.dart
+    ¦           ¦   ¦           
+    ¦           ¦   +---pigeons
+    ¦           ¦   ¦       copyright.txt
+    ¦           ¦   ¦       messages.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---test
+    ¦           ¦   ¦       file_selector_windows_test.dart
+    ¦           ¦   ¦       file_selector_windows_test.mocks.dart
+    ¦           ¦   ¦       test_api.g.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---windows
+    ¦           ¦       ¦   CMakeLists.txt
+    ¦           ¦       ¦   file_dialog_controller.cpp
+    ¦           ¦       ¦   file_dialog_controller.h
+    ¦           ¦       ¦   file_selector_plugin.cpp
+    ¦           ¦       ¦   file_selector_plugin.h
+    ¦           ¦       ¦   file_selector_windows.cpp
+    ¦           ¦       ¦   messages.g.cpp
+    ¦           ¦       ¦   messages.g.h
+    ¦           ¦       ¦   string_utils.cpp
+    ¦           ¦       ¦   string_utils.h
+    ¦           ¦       ¦   
+    ¦           ¦       +---include
+    ¦           ¦       ¦   +---file_selector_windows
+    ¦           ¦       ¦           file_selector_windows.h
+    ¦           ¦       ¦           
+    ¦           ¦       +---test
+    ¦           ¦               file_selector_plugin_test.cpp
+    ¦           ¦               test_file_dialog_controller.cpp
+    ¦           ¦               test_file_dialog_controller.h
+    ¦           ¦               test_main.cpp
+    ¦           ¦               test_utils.cpp
+    ¦           ¦               test_utils.h
+    ¦           ¦               
+    ¦           +---flutter_local_notifications_windows
+    ¦           ¦   ¦   build.bat
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   dart_test.yaml
+    ¦           ¦   ¦   ffigen.yaml
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---lib
+    ¦           ¦   ¦   ¦   flutter_local_notifications_windows.dart
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦       ¦   details.dart
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---details
+    ¦           ¦   ¦       ¦   ¦   initialization_settings.dart
+    ¦           ¦   ¦       ¦   ¦   notification_action.dart
+    ¦           ¦   ¦       ¦   ¦   notification_audio.dart
+    ¦           ¦   ¦       ¦   ¦   notification_details.dart
+    ¦           ¦   ¦       ¦   ¦   notification_header.dart
+    ¦           ¦   ¦       ¦   ¦   notification_input.dart
+    ¦           ¦   ¦       ¦   ¦   notification_parts.dart
+    ¦           ¦   ¦       ¦   ¦   notification_progress.dart
+    ¦           ¦   ¦       ¦   ¦   notification_row.dart
+    ¦           ¦   ¦       ¦   ¦   notification_to_xml.dart
+    ¦           ¦   ¦       ¦   ¦   
+    ¦           ¦   ¦       ¦   +---xml
+    ¦           ¦   ¦       ¦           action.dart
+    ¦           ¦   ¦       ¦           audio.dart
+    ¦           ¦   ¦       ¦           details.dart
+    ¦           ¦   ¦       ¦           header.dart
+    ¦           ¦   ¦       ¦           image.dart
+    ¦           ¦   ¦       ¦           input.dart
+    ¦           ¦   ¦       ¦           progress.dart
+    ¦           ¦   ¦       ¦           row.dart
+    ¦           ¦   ¦       ¦           text.dart
+    ¦           ¦   ¦       ¦           
+    ¦           ¦   ¦       +---ffi
+    ¦           ¦   ¦       ¦       bindings.dart
+    ¦           ¦   ¦       ¦       utils.dart
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---msix
+    ¦           ¦   ¦       ¦       ffi.dart
+    ¦           ¦   ¦       ¦       stub.dart
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---plugin
+    ¦           ¦   ¦               base.dart
+    ¦           ¦   ¦               ffi.dart
+    ¦           ¦   ¦               stub.dart
+    ¦           ¦   ¦               
+    ¦           ¦   +---src
+    ¦           ¦   ¦       CMakeLists.txt
+    ¦           ¦   ¦       ffi_api.cpp
+    ¦           ¦   ¦       ffi_api.h
+    ¦           ¦   ¦       plugin.cpp
+    ¦           ¦   ¦       plugin.hpp
+    ¦           ¦   ¦       utils.cpp
+    ¦           ¦   ¦       utils.hpp
+    ¦           ¦   ¦       
+    ¦           ¦   +---test
+    ¦           ¦   ¦       bindings_test.dart
+    ¦           ¦   ¦       details_test.dart
+    ¦           ¦   ¦       icon.png
+    ¦           ¦   ¦       plugin_test.dart
+    ¦           ¦   ¦       scheduled_test.dart
+    ¦           ¦   ¦       sound.mp3
+    ¦           ¦   ¦       xml_test.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---windows
+    ¦           ¦           CMakeLists.txt
+    ¦           ¦           
+    ¦           +---image_picker_windows
+    ¦           ¦   ¦   AUTHORS
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   README.md
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦   ¦       main.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---windows
+    ¦           ¦   ¦       ¦   CMakeLists.txt
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---flutter
+    ¦           ¦   ¦       ¦       CMakeLists.txt
+    ¦           ¦   ¦       ¦       generated_plugins.cmake
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---runner
+    ¦           ¦   ¦           ¦   CMakeLists.txt
+    ¦           ¦   ¦           ¦   flutter_window.cpp
+    ¦           ¦   ¦           ¦   flutter_window.h
+    ¦           ¦   ¦           ¦   main.cpp
+    ¦           ¦   ¦           ¦   resource.h
+    ¦           ¦   ¦           ¦   runner.exe.manifest
+    ¦           ¦   ¦           ¦   Runner.rc
+    ¦           ¦   ¦           ¦   utils.cpp
+    ¦           ¦   ¦           ¦   utils.h
+    ¦           ¦   ¦           ¦   win32_window.cpp
+    ¦           ¦   ¦           ¦   win32_window.h
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---resources
+    ¦           ¦   ¦                   app_icon.ico
+    ¦           ¦   ¦                   
+    ¦           ¦   +---lib
+    ¦           ¦   ¦       image_picker_windows.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---test
+    ¦           ¦           image_picker_windows_test.dart
+    ¦           ¦           image_picker_windows_test.mocks.dart
+    ¦           ¦           
+    ¦           +---open_file_windows
+    ¦           ¦   ¦   analysis_options.yaml
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   open_file_windows.iml
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---lib
+    ¦           ¦   ¦       open_file_windows.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---test
+    ¦           ¦           open_file_windows_test.dart
+    ¦           ¦           
+    ¦           +---path_provider_windows
+    ¦           ¦   ¦   AUTHORS
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   README.md
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---integration_test
+    ¦           ¦   ¦   ¦       path_provider_test.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦   ¦       main.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---test_driver
+    ¦           ¦   ¦   ¦       integration_test.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---windows
+    ¦           ¦   ¦       ¦   CMakeLists.txt
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---flutter
+    ¦           ¦   ¦       ¦       CMakeLists.txt
+    ¦           ¦   ¦       ¦       generated_plugins.cmake
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---runner
+    ¦           ¦   ¦           ¦   CMakeLists.txt
+    ¦           ¦   ¦           ¦   flutter_window.cpp
+    ¦           ¦   ¦           ¦   flutter_window.h
+    ¦           ¦   ¦           ¦   main.cpp
+    ¦           ¦   ¦           ¦   resource.h
+    ¦           ¦   ¦           ¦   runner.exe.manifest
+    ¦           ¦   ¦           ¦   Runner.rc
+    ¦           ¦   ¦           ¦   run_loop.cpp
+    ¦           ¦   ¦           ¦   run_loop.h
+    ¦           ¦   ¦           ¦   utils.cpp
+    ¦           ¦   ¦           ¦   utils.h
+    ¦           ¦   ¦           ¦   win32_window.cpp
+    ¦           ¦   ¦           ¦   win32_window.h
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---resources
+    ¦           ¦   ¦                   app_icon.ico
+    ¦           ¦   ¦                   
+    ¦           ¦   +---lib
+    ¦           ¦   ¦   ¦   path_provider_windows.dart
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦           folders.dart
+    ¦           ¦   ¦           folders_stub.dart
+    ¦           ¦   ¦           guid.dart
+    ¦           ¦   ¦           path_provider_windows_real.dart
+    ¦           ¦   ¦           path_provider_windows_stub.dart
+    ¦           ¦   ¦           win32_wrappers.dart
+    ¦           ¦   ¦           
+    ¦           ¦   +---test
+    ¦           ¦           guid_test.dart
+    ¦           ¦           path_provider_windows_test.dart
+    ¦           ¦           
+    ¦           +---permission_handler_windows
+    ¦           ¦   ¦   AUTHORS
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   README.md
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦   ¦       main.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---res
+    ¦           ¦   ¦   ¦   +---images
+    ¦           ¦   ¦   ¦           baseflow_logo_def_light-02.png
+    ¦           ¦   ¦   ¦           poweredByBaseflowLogoLight.png
+    ¦           ¦   ¦   ¦           poweredByBaseflowLogoLight@2x.png
+    ¦           ¦   ¦   ¦           poweredByBaseflowLogoLight@3x.png
+    ¦           ¦   ¦   ¦           
+    ¦           ¦   ¦   +---windows
+    ¦           ¦   ¦       ¦   CMakeLists.txt
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---flutter
+    ¦           ¦   ¦       ¦       CMakeLists.txt
+    ¦           ¦   ¦       ¦       generated_plugins.cmake
+    ¦           ¦   ¦       ¦       generated_plugin_registrant.cc
+    ¦           ¦   ¦       ¦       generated_plugin_registrant.h
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---runner
+    ¦           ¦   ¦           ¦   CMakeLists.txt
+    ¦           ¦   ¦           ¦   flutter_window.cpp
+    ¦           ¦   ¦           ¦   flutter_window.h
+    ¦           ¦   ¦           ¦   main.cpp
+    ¦           ¦   ¦           ¦   resource.h
+    ¦           ¦   ¦           ¦   runner.exe.manifest
+    ¦           ¦   ¦           ¦   Runner.rc
+    ¦           ¦   ¦           ¦   utils.cpp
+    ¦           ¦   ¦           ¦   utils.h
+    ¦           ¦   ¦           ¦   win32_window.cpp
+    ¦           ¦   ¦           ¦   win32_window.h
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---resources
+    ¦           ¦   ¦                   app_icon.ico
+    ¦           ¦   ¦                   
+    ¦           ¦   +---windows
+    ¦           ¦       ¦   CMakeLists.txt
+    ¦           ¦       ¦   permission_constants.h
+    ¦           ¦       ¦   permission_handler_windows_plugin.cpp
+    ¦           ¦       ¦   
+    ¦           ¦       +---include
+    ¦           ¦           +---permission_handler_windows
+    ¦           ¦                   permission_handler_windows_plugin.h
+    ¦           ¦                   
+    ¦           +---printing
+    ¦           ¦   ¦   analysis_options.yaml
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   CONTRIBUTING.md
+    ¦           ¦   ¦   example.png
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---android
+    ¦           ¦   ¦   ¦   build.gradle
+    ¦           ¦   ¦   ¦   settings.gradle
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦       +---main
+    ¦           ¦   ¦           ¦   AndroidManifest.xml
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---java
+    ¦           ¦   ¦           ¦   +---android
+    ¦           ¦   ¦           ¦   ¦   +---print
+    ¦           ¦   ¦           ¦   ¦           PdfConvert.java
+    ¦           ¦   ¦           ¦   ¦           
+    ¦           ¦   ¦           ¦   +---net
+    ¦           ¦   ¦           ¦       +---nfet
+    ¦           ¦   ¦           ¦           +---flutter
+    ¦           ¦   ¦           ¦               +---printing
+    ¦           ¦   ¦           ¦                       PrintFileProvider.java
+    ¦           ¦   ¦           ¦                       PrintingHandler.java
+    ¦           ¦   ¦           ¦                       PrintingJob.java
+    ¦           ¦   ¦           ¦                       PrintingPlugin.java
+    ¦           ¦   ¦           ¦                       
+    ¦           ¦   ¦           +---res
+    ¦           ¦   ¦               +---xml
+    ¦           ¦   ¦                       flutter_printing_file_paths.xml
+    ¦           ¦   ¦                       
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦           main.dart
+    ¦           ¦   ¦           
+    ¦           ¦   +---ios
+    ¦           ¦   ¦   ¦   printing.podspec
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---Classes
+    ¦           ¦   ¦           CustomPrintPaper.swift
+    ¦           ¦   ¦           PrintingPlugin.m
+    ¦           ¦   ¦           PrintingPlugin.swift
+    ¦           ¦   ¦           PrintJob.swift
+    ¦           ¦   ¦           
+    ¦           ¦   +---lib
+    ¦           ¦   ¦   ¦   printing.dart
+    ¦           ¦   ¦   ¦   printing_web.dart
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---src
+    ¦           ¦   ¦       ¦   asset_utils.dart
+    ¦           ¦   ¦       ¦   cache.dart
+    ¦           ¦   ¦       ¦   callback.dart
+    ¦           ¦   ¦       ¦   interface.dart
+    ¦           ¦   ¦       ¦   method_channel.dart
+    ¦           ¦   ¦       ¦   method_channel_ffi.dart
+    ¦           ¦   ¦       ¦   method_channel_js.dart
+    ¦           ¦   ¦       ¦   mutex.dart
+    ¦           ¦   ¦       ¦   output_type.dart
+    ¦           ¦   ¦       ¦   pdfjs.dart
+    ¦           ¦   ¦       ¦   platform_js.dart
+    ¦           ¦   ¦       ¦   platform_os.dart
+    ¦           ¦   ¦       ¦   printer.dart
+    ¦           ¦   ¦       ¦   printing.dart
+    ¦           ¦   ¦       ¦   printing_info.dart
+    ¦           ¦   ¦       ¦   print_job.dart
+    ¦           ¦   ¦       ¦   raster.dart
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---fonts
+    ¦           ¦   ¦       ¦       font.dart
+    ¦           ¦   ¦       ¦       gfonts.dart
+    ¦           ¦   ¦       ¦       manifest.dart
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---preview
+    ¦           ¦   ¦               actions.dart
+    ¦           ¦   ¦               action_bar_theme.dart
+    ¦           ¦   ¦               controller.dart
+    ¦           ¦   ¦               custom.dart
+    ¦           ¦   ¦               page.dart
+    ¦           ¦   ¦               pdf_preview.dart
+    ¦           ¦   ¦               raster.dart
+    ¦           ¦   ¦               
+    ¦           ¦   +---linux
+    ¦           ¦   ¦   ¦   CMakeLists.txt
+    ¦           ¦   ¦   ¦   printing_plugin.cc
+    ¦           ¦   ¦   ¦   print_job.cc
+    ¦           ¦   ¦   ¦   print_job.h
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---include
+    ¦           ¦   ¦       +---printing
+    ¦           ¦   ¦               printing_plugin.h
+    ¦           ¦   ¦               
+    ¦           ¦   +---macos
+    ¦           ¦   ¦   ¦   printing.podspec
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---Classes
+    ¦           ¦   ¦           PrintingPlugin.m
+    ¦           ¦   ¦           PrintingPlugin.swift
+    ¦           ¦   ¦           PrintJob.swift
+    ¦           ¦   ¦           
+    ¦           ¦   +---test
+    ¦           ¦   ¦       document_test.dart
+    ¦           ¦   ¦       info_test.dart
+    ¦           ¦   ¦       printing_test.dart
+    ¦           ¦   ¦       raster_test.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---windows
+    ¦           ¦       ¦   CMakeLists.txt
+    ¦           ¦       ¦   DownloadProject.cmake
+    ¦           ¦       ¦   DownloadProject.CMakeLists.cmake.in
+    ¦           ¦       ¦   printing.cpp
+    ¦           ¦       ¦   printing.h
+    ¦           ¦       ¦   printing_plugin.cpp
+    ¦           ¦       ¦   print_job.cpp
+    ¦           ¦       ¦   print_job.h
+    ¦           ¦       ¦   
+    ¦           ¦       +---include
+    ¦           ¦           +---printing
+    ¦           ¦                   printing_plugin.h
+    ¦           ¦                   
+    ¦           +---shared_preferences_windows
+    ¦           ¦   ¦   AUTHORS
+    ¦           ¦   ¦   CHANGELOG.md
+    ¦           ¦   ¦   LICENSE
+    ¦           ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   README.md
+    ¦           ¦   ¦   
+    ¦           ¦   +---example
+    ¦           ¦   ¦   ¦   AUTHORS
+    ¦           ¦   ¦   ¦   LICENSE
+    ¦           ¦   ¦   ¦   pubspec.yaml
+    ¦           ¦   ¦   ¦   README.md
+    ¦           ¦   ¦   ¦   
+    ¦           ¦   ¦   +---integration_test
+    ¦           ¦   ¦   ¦       shared_preferences_test.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---lib
+    ¦           ¦   ¦   ¦       main.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---test_driver
+    ¦           ¦   ¦   ¦       integration_test.dart
+    ¦           ¦   ¦   ¦       
+    ¦           ¦   ¦   +---windows
+    ¦           ¦   ¦       ¦   CMakeLists.txt
+    ¦           ¦   ¦       ¦   
+    ¦           ¦   ¦       +---flutter
+    ¦           ¦   ¦       ¦       CMakeLists.txt
+    ¦           ¦   ¦       ¦       generated_plugins.cmake
+    ¦           ¦   ¦       ¦       
+    ¦           ¦   ¦       +---runner
+    ¦           ¦   ¦           ¦   CMakeLists.txt
+    ¦           ¦   ¦           ¦   flutter_window.cpp
+    ¦           ¦   ¦           ¦   flutter_window.h
+    ¦           ¦   ¦           ¦   main.cpp
+    ¦           ¦   ¦           ¦   resource.h
+    ¦           ¦   ¦           ¦   runner.exe.manifest
+    ¦           ¦   ¦           ¦   Runner.rc
+    ¦           ¦   ¦           ¦   run_loop.cpp
+    ¦           ¦   ¦           ¦   run_loop.h
+    ¦           ¦   ¦           ¦   utils.cpp
+    ¦           ¦   ¦           ¦   utils.h
+    ¦           ¦   ¦           ¦   win32_window.cpp
+    ¦           ¦   ¦           ¦   win32_window.h
+    ¦           ¦   ¦           ¦   
+    ¦           ¦   ¦           +---resources
+    ¦           ¦   ¦                   app_icon.ico
+    ¦           ¦   ¦                   
+    ¦           ¦   +---lib
+    ¦           ¦   ¦       shared_preferences_windows.dart
+    ¦           ¦   ¦       
+    ¦           ¦   +---test
+    ¦           ¦           fake_path_provider_windows.dart
+    ¦           ¦           legacy_shared_preferences_windows_test.dart
+    ¦           ¦           shared_preferences_windows_async_test.dart
+    ¦           ¦           
+    ¦           +---url_launcher_windows
+    ¦               ¦   AUTHORS
+    ¦               ¦   CHANGELOG.md
+    ¦               ¦   LICENSE
+    ¦               ¦   pubspec.yaml
+    ¦               ¦   README.md
+    ¦               ¦   
+    ¦               +---example
+    ¦               ¦   ¦   pubspec.yaml
+    ¦               ¦   ¦   README.md
+    ¦               ¦   ¦   
+    ¦               ¦   +---integration_test
+    ¦               ¦   ¦       url_launcher_test.dart
+    ¦               ¦   ¦       
+    ¦               ¦   +---lib
+    ¦               ¦   ¦       main.dart
+    ¦               ¦   ¦       
+    ¦               ¦   +---test_driver
+    ¦               ¦   ¦       integration_test.dart
+    ¦               ¦   ¦       
+    ¦               ¦   +---windows
+    ¦               ¦       ¦   CMakeLists.txt
+    ¦               ¦       ¦   
+    ¦               ¦       +---flutter
+    ¦               ¦       ¦       CMakeLists.txt
+    ¦               ¦       ¦       generated_plugins.cmake
+    ¦               ¦       ¦       
+    ¦               ¦       +---runner
+    ¦               ¦           ¦   CMakeLists.txt
+    ¦               ¦           ¦   flutter_window.cpp
+    ¦               ¦           ¦   flutter_window.h
+    ¦               ¦           ¦   main.cpp
+    ¦               ¦           ¦   resource.h
+    ¦               ¦           ¦   runner.exe.manifest
+    ¦               ¦           ¦   Runner.rc
+    ¦               ¦           ¦   run_loop.cpp
+    ¦               ¦           ¦   run_loop.h
+    ¦               ¦           ¦   utils.cpp
+    ¦               ¦           ¦   utils.h
+    ¦               ¦           ¦   win32_window.cpp
+    ¦               ¦           ¦   win32_window.h
+    ¦               ¦           ¦   
+    ¦               ¦           +---resources
+    ¦               ¦                   app_icon.ico
+    ¦               ¦                   
+    ¦               +---lib
+    ¦               ¦   ¦   url_launcher_windows.dart
+    ¦               ¦   ¦   
+    ¦               ¦   +---src
+    ¦               ¦           messages.g.dart
+    ¦               ¦           
+    ¦               +---pigeons
+    ¦               ¦       copyright.txt
+    ¦               ¦       messages.dart
+    ¦               ¦       
+    ¦               +---test
+    ¦               ¦       url_launcher_windows_test.dart
+    ¦               ¦       
+    ¦               +---windows
+    ¦                   ¦   CMakeLists.txt
+    ¦                   ¦   messages.g.cpp
+    ¦                   ¦   messages.g.h
+    ¦                   ¦   system_apis.cpp
+    ¦                   ¦   system_apis.h
+    ¦                   ¦   url_launcher_plugin.cpp
+    ¦                   ¦   url_launcher_plugin.h
+    ¦                   ¦   url_launcher_windows.cpp
+    ¦                   ¦   
+    ¦                   +---include
+    ¦                   ¦   +---url_launcher_windows
+    ¦                   ¦           url_launcher_windows.h
+    ¦                   ¦           
+    ¦                   +---test
+    ¦                           url_launcher_windows_test.cpp
+    ¦                           
+    +---runner
+        ¦   CMakeLists.txt
+        ¦   flutter_window.cpp
+        ¦   flutter_window.h
+        ¦   main.cpp
+        ¦   resource.h
+        ¦   runner.exe.manifest
+        ¦   Runner.rc
+        ¦   utils.cpp
+        ¦   utils.h
+        ¦   win32_window.cpp
+        ¦   win32_window.h
+        ¦   
+        +---resources
+                app_icon.ico
+                
