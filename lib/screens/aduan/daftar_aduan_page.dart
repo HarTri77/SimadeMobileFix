@@ -154,8 +154,9 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
     }
   }
 
+  // PERBAIKAN: Semua aduan bisa dihapus, tidak peduli statusnya
   bool _canDeleteAduan(AduanModel aduan) {
-    return aduan.status == 'baru' || aduan.status == 'ditolak';
+    return true; // Semua aduan bisa dihapus dalam kondisi apapun
   }
 
   Widget _buildAduanCard(AduanModel aduan, bool isSmallScreen) {
@@ -184,16 +185,15 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // PERBAIKAN: Header dengan layout yang lebih baik
+                  // Header dengan Status dan Prioritas
                   Row(
                     children: [
-                      // Status dan Prioritas dalam satu row
                       Expanded(
                         child: Wrap(
                           spacing: 8,
                           runSpacing: 4,
                           children: [
-                            // Status
+                            // Status Badge
                             Container(
                               padding: EdgeInsets.symmetric(
                                 horizontal: isSmallScreen ? 8 : 10,
@@ -214,7 +214,7 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
                               ),
                             ),
                             
-                            // Prioritas
+                            // Prioritas Badge
                             Container(
                               padding: EdgeInsets.symmetric(
                                 horizontal: isSmallScreen ? 8 : 10,
@@ -248,45 +248,44 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
                           ],
                         ),
                       ),
-                      
-                      // PERBAIKAN: Tanggal dan tombol hapus dipisah row baru
                     ],
                   ),
                   
-                  // PERBAIKAN: Row kedua untuk tanggal dan tombol hapus
                   SizedBox(height: 8),
+                  
+                  // Row untuk Tanggal dan Tombol Hapus
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // Tanggal
-                      Text(
-                        aduan.formattedCreatedAt,
-                        style: GoogleFonts.poppins(
-                          fontSize: isSmallScreen ? 10 : 11,
-                          color: Colors.grey.shade600,
+                      Expanded(
+                        child: Text(
+                          aduan.formattedCreatedAt,
+                          style: GoogleFonts.poppins(
+                            fontSize: isSmallScreen ? 10 : 11,
+                            color: Colors.grey.shade600,
+                          ),
                         ),
                       ),
-                      Spacer(),
                       
-                      // TOMBOL HAPUS - PASTI MUNCUL KALAU BISA DIHAPUS
-                      if (canDelete)
-                        Container(
-                          height: isSmallScreen ? 28 : 32,
-                          child: ElevatedButton(
-                            onPressed: () => _deleteAduan(aduan.id, aduan.judul),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.errorColor.withOpacity(0.1),
-                              foregroundColor: AppColors.errorColor,
-                              elevation: 0,
-                              padding: EdgeInsets.symmetric(
-                                horizontal: isSmallScreen ? 8 : 12,
-                                vertical: 4,
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                side: BorderSide(
-                                  color: AppColors.errorColor.withOpacity(0.3),
-                                  width: 1,
-                                ),
+                      // TOMBOL HAPUS - SELALU MUNCUL
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () => _deleteAduan(aduan.id, aduan.judul),
+                          borderRadius: BorderRadius.circular(8),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isSmallScreen ? 10 : 12,
+                              vertical: isSmallScreen ? 6 : 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.errorColor.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: AppColors.errorColor,
+                                width: 1.5,
                               ),
                             ),
                             child: Row(
@@ -294,22 +293,26 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
                               children: [
                                 Icon(
                                   Icons.delete_outline,
-                                  size: isSmallScreen ? 14 : 16,
+                                  size: isSmallScreen ? 16 : 18,
+                                  color: AppColors.errorColor,
                                 ),
                                 SizedBox(width: 4),
                                 Text(
                                   'Hapus',
                                   style: GoogleFonts.poppins(
-                                    fontSize: isSmallScreen ? 10 : 11,
+                                    fontSize: isSmallScreen ? 11 : 12,
                                     fontWeight: FontWeight.w600,
+                                    color: AppColors.errorColor,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
+                      ),
                     ],
                   ),
+                  
                   SizedBox(height: isSmallScreen ? 8 : 12),
 
                   // Judul
@@ -382,27 +385,6 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
                               style: GoogleFonts.poppins(
                                 fontSize: isSmallScreen ? 10 : 11,
                                 color: Colors.grey.shade600,
-                              ),
-                            ),
-                          ],
-                        ),
-
-                      // Info bisa dihapus atau tidak
-                      if (!canDelete)
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.lock_outline,
-                              size: isSmallScreen ? 12 : 14,
-                              color: Colors.grey.shade400,
-                            ),
-                            SizedBox(width: 4),
-                            Text(
-                              'Tidak dapat dihapus',
-                              style: GoogleFonts.poppins(
-                                fontSize: isSmallScreen ? 10 : 11,
-                                color: Colors.grey.shade400,
                               ),
                             ),
                           ],

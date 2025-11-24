@@ -21,7 +21,6 @@ class _DaftarBeritaPageState extends State<DaftarBeritaPage> {
   bool _isLoading = true;
   bool _isError = false;
   
-  // Search
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -78,7 +77,11 @@ class _DaftarBeritaPageState extends State<DaftarBeritaPage> {
               'Gagal memuat berita: $e',
               style: GoogleFonts.poppins(),
             ),
-            backgroundColor: AppColors.errorColor,
+            backgroundColor: const Color(0xFFFF6B6B),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
           ),
         );
       }
@@ -87,269 +90,322 @@ class _DaftarBeritaPageState extends State<DaftarBeritaPage> {
     }
   }
 
-  Widget _buildBeritaCard(BeritaModel berita, bool isSmallScreen) {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFF5F7FA),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_rounded, color: Color(0xFF2D3436)),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Berita Desa',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF2D3436),
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh_rounded, color: Color(0xFF6C5CE7)),
+            onPressed: _loadBerita,
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          _buildSearchSection(),
+          Expanded(
+            child: _isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: Color(0xFF6C5CE7),
+                    ),
+                  )
+                : _isError
+                    ? _buildErrorState()
+                    : _filteredBeritaList.isEmpty
+                        ? _buildEmptyState()
+                        : _buildBeritaList(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchSection() {
     return Container(
-      margin: EdgeInsets.only(bottom: isSmallScreen ? 16 : 20),
-      child: GlassContainer(
-        blur: 10,
-        opacity: 0.1,
-        borderRadius: BorderRadius.circular(16),
-        child: Material(
-          color: Colors.transparent,
-          child: InkWell(
-            borderRadius: BorderRadius.circular(16),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailBeritaPage(beritaId: berita.id),
+      padding: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
                 ),
-              );
-            },
-            child: Container(
-              padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Gambar Berita
-                  if (berita.hasGambar) ...[
-                    Container(
-                      height: isSmallScreen ? 140 : 180,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: Colors.grey.shade200,
+              ],
+            ),
+            child: TextField(
+              controller: _searchController,
+              decoration: InputDecoration(
+                hintText: 'Cari berita...',
+                hintStyle: GoogleFonts.poppins(
+                  color: const Color(0xFF636E72),
+                  fontSize: 14,
+                ),
+                prefixIcon: const Icon(
+                  Icons.search_rounded,
+                  color: Color(0xFF6C5CE7),
+                ),
+                suffixIcon: _searchController.text.isNotEmpty
+                    ? IconButton(
+                        icon: const Icon(Icons.clear_rounded, color: Color(0xFF636E72)),
+                        onPressed: () {
+                          _searchController.clear();
+                          _applySearch();
+                        },
+                      )
+                    : null,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(14),
+                  borderSide: BorderSide.none,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 14,
+                ),
+              ),
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: const Color(0xFF2D3436),
+              ),
+            ),
+          ),
+          if (!_isLoading && !_isError) ...[
+            const SizedBox(height: 12),
+            Row(
+              children: [
+                Text(
+                  'Ditemukan ${_filteredBeritaList.length} berita',
+                  style: GoogleFonts.poppins(
+                    fontSize: 13,
+                    color: const Color(0xFF636E72),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBeritaList() {
+    return RefreshIndicator(
+      onRefresh: _loadBerita,
+      color: const Color(0xFF6C5CE7),
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        itemCount: _filteredBeritaList.length,
+        itemBuilder: (context, index) {
+          return _buildBeritaCard(_filteredBeritaList[index]);
+        },
+      ),
+    );
+  }
+
+  Widget _buildBeritaCard(BeritaModel berita) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailBeritaPage(beritaId: berita.id),
+              ),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.04),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Gambar Berita
+                if (berita.hasGambar)
+                  Container(
+                    height: 180,
+                    width: double.infinity,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16),
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: CachedNetworkImage(
-                          imageUrl: berita.gambarUrl!,
-                          fit: BoxFit.cover,
-                          placeholder: (context, url) => Container(
-                            color: Colors.grey.shade200,
-                            child: Center(
-                              child: CircularProgressIndicator(
-                                color: AppColors.primaryBlue,
-                                strokeWidth: 2,
-                              ),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(16),
+                        topRight: Radius.circular(16),
+                      ),
+                      child: CachedNetworkImage(
+                        imageUrl: berita.gambarUrl!,
+                        fit: BoxFit.cover,
+                        placeholder: (context, url) => Container(
+                          color: Colors.grey.shade200,
+                          child: const Center(
+                            child: CircularProgressIndicator(
+                              color: Color(0xFF6C5CE7),
+                              strokeWidth: 2,
                             ),
                           ),
-                          errorWidget: (context, url, error) => Container(
-                            color: Colors.grey.shade200,
-                            child: Icon(
-                              Icons.image_not_supported_outlined,
-                              color: Colors.grey.shade400,
-                              size: 40,
-                            ),
+                        ),
+                        errorWidget: (context, url, error) => Container(
+                          color: Colors.grey.shade200,
+                          child: Icon(
+                            Icons.image_not_supported_rounded,
+                            color: Colors.grey.shade400,
+                            size: 48,
                           ),
                         ),
                       ),
                     ),
-                    SizedBox(height: isSmallScreen ? 12 : 16),
-                  ],
-
-                  // Judul
-                  Text(
-                    berita.judul,
-                    style: GoogleFonts.poppins(
-                      fontSize: isSmallScreen ? 16 : 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.darkNavy,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
                   ),
-                  SizedBox(height: isSmallScreen ? 8 : 12),
 
-                  // Preview Konten
-                  Text(
-                    berita.previewText,
-                    style: GoogleFonts.poppins(
-                      fontSize: isSmallScreen ? 13 : 14,
-                      color: Colors.grey.shade600,
-                      height: 1.4,
-                    ),
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  SizedBox(height: isSmallScreen ? 12 : 16),
-
-                  // Footer Info
-                  Row(
+                // Content
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Penulis
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.person_outline,
-                            size: isSmallScreen ? 14 : 16,
-                            color: Colors.grey.shade500,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            berita.penulisNama,
-                            style: GoogleFonts.poppins(
-                              fontSize: isSmallScreen ? 11 : 12,
-                              color: Colors.grey.shade600,
-                            ),
-                          ),
-                        ],
+                      // Judul
+                      Text(
+                        berita.judul,
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: const Color(0xFF2D3436),
+                          height: 1.3,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      SizedBox(width: isSmallScreen ? 12 : 16),
+                      const SizedBox(height: 8),
 
-                      // Tanggal
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.calendar_today_outlined,
-                            size: isSmallScreen ? 14 : 16,
-                            color: Colors.grey.shade500,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            berita.formattedPublishedAt,
-                            style: GoogleFonts.poppins(
-                              fontSize: isSmallScreen ? 11 : 12,
-                              color: Colors.grey.shade600,
-                            ),
-                          ),
-                        ],
+                      // Preview Konten
+                      Text(
+                        berita.previewText,
+                        style: GoogleFonts.poppins(
+                          fontSize: 13,
+                          color: const Color(0xFF636E72),
+                          height: 1.5,
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      Spacer(),
+                      const SizedBox(height: 12),
 
-                      // Views
+                      // Footer Info
                       Row(
                         children: [
-                          Icon(
-                            Icons.remove_red_eye_outlined,
-                            size: isSmallScreen ? 14 : 16,
-                            color: Colors.grey.shade500,
-                          ),
-                          SizedBox(width: 4),
-                          Text(
-                            berita.viewsText,
-                            style: GoogleFonts.poppins(
-                              fontSize: isSmallScreen ? 11 : 12,
-                              color: Colors.grey.shade600,
+                          // Penulis
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
                             ),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFF6C5CE7).withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.person_outline_rounded,
+                                  size: 14,
+                                  color: Color(0xFF6C5CE7),
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  berita.penulisNama,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 11,
+                                    color: const Color(0xFF6C5CE7),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+
+                          // Tanggal
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.calendar_today_rounded,
+                                size: 12,
+                                color: Colors.grey.shade500,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                berita.formattedPublishedAt,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 11,
+                                  color: Colors.grey.shade600,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+
+                          // Views
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.visibility_outlined,
+                                size: 12,
+                                color: Colors.grey.shade500,
+                              ),
+                              const SizedBox(width: 4),
+                              Text(
+                                berita.viewsText,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 11,
+                                  color: Colors.grey.shade600,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSearchBar(bool isSmallScreen) {
-    return GlassContainer(
-      blur: 10,
-      opacity: 0.1,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-        child: TextField(
-          controller: _searchController,
-          decoration: InputDecoration(
-            hintText: 'Cari berita...',
-            hintStyle: GoogleFonts.poppins(
-              color: Colors.grey.shade500,
-            ),
-            prefixIcon: Icon(Icons.search, color: Colors.grey.shade500),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
-            ),
-            filled: true,
-            fillColor: Colors.white.withOpacity(0.9),
-            contentPadding: EdgeInsets.symmetric(
-              horizontal: isSmallScreen ? 12 : 16,
-              vertical: isSmallScreen ? 14 : 16,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isSmallScreen = screenWidth < 360;
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Berita Desa',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            color: AppColors.darkNavy,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.darkNavy),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh, color: AppColors.darkNavy),
-            onPressed: _loadBerita,
-          ),
-        ],
-      ),
-      body: Container(
-        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
-            child: Column(
-              children: [
-                // Search Bar
-                _buildSearchBar(isSmallScreen),
-                SizedBox(height: isSmallScreen ? 16 : 20),
-                
-                // Results Count
-                if (!_isLoading && !_isError)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Ditemukan ${_filteredBeritaList.length} berita',
-                      style: GoogleFonts.poppins(
-                        fontSize: isSmallScreen ? 12 : 14,
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
-                  ),
-                SizedBox(height: 8),
-                
-                // Main Content
-                Expanded(
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(color: AppColors.primaryBlue),
-                        )
-                      : _isError
-                          ? _buildErrorState()
-                          : _filteredBeritaList.isEmpty
-                              ? _buildEmptyState(isSmallScreen)
-                              : RefreshIndicator(
-                                  onRefresh: _loadBerita,
-                                  color: AppColors.primaryBlue,
-                                  child: ListView.builder(
-                                    physics: const BouncingScrollPhysics(),
-                                    itemCount: _filteredBeritaList.length,
-                                    itemBuilder: (context, index) {
-                                      return _buildBeritaCard(_filteredBeritaList[index], isSmallScreen);
-                                    },
-                                  ),
-                                ),
                 ),
               ],
             ),
@@ -361,82 +417,138 @@ class _DaftarBeritaPageState extends State<DaftarBeritaPage> {
 
   Widget _buildErrorState() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: AppColors.errorColor,
-          ),
-          SizedBox(height: 16),
-          Text(
-            'Gagal memuat berita',
-            style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
-            ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            'Silakan coba lagi',
-            style: GoogleFonts.poppins(
-              color: Colors.grey.shade600,
-            ),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _loadBerita,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryBlue,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF6B6B).withOpacity(0.1),
+                shape: BoxShape.circle,
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+              child: const Icon(
+                Icons.error_outline_rounded,
+                size: 64,
+                color: Color(0xFFFF6B6B),
+              ),
             ),
-            child: Text(
-              'Coba Lagi',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+            const SizedBox(height: 24),
+            Text(
+              'Gagal Memuat Berita',
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF2D3436),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              'Terjadi kesalahan saat memuat data.\nSilakan coba lagi.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: const Color(0xFF636E72),
+              ),
+            ),
+            const SizedBox(height: 24),
+            SizedBox(
+              width: 160,
+              height: 48,
+              child: ElevatedButton(
+                onPressed: _loadBerita,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF6C5CE7),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 0,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.refresh_rounded, size: 20),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Coba Lagi',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildEmptyState(bool isSmallScreen) {
+  Widget _buildEmptyState() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.article_outlined,
-            size: 64,
-            color: Colors.grey.shade400,
-          ),
-          SizedBox(height: 16),
-          Text(
-            _searchController.text.isEmpty
-                ? 'Belum ada berita'
-                : 'Tidak ada berita yang sesuai',
-            style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
+      child: Padding(
+        padding: const EdgeInsets.all(40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: const Color(0xFF6C5CE7).withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                _searchController.text.isEmpty
+                    ? Icons.article_outlined
+                    : Icons.search_off_rounded,
+                size: 64,
+                color: const Color(0xFF6C5CE7),
+              ),
             ),
-          ),
-          SizedBox(height: 8),
-          Text(
-            _searchController.text.isEmpty
-                ? 'Tidak ada berita yang diterbitkan'
-                : 'Coba ubah kata kunci pencarian',
-            style: GoogleFonts.poppins(
-              color: Colors.grey.shade600,
+            const SizedBox(height: 24),
+            Text(
+              _searchController.text.isEmpty
+                  ? 'Belum Ada Berita'
+                  : 'Tidak Ditemukan',
+              style: GoogleFonts.poppins(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: const Color(0xFF2D3436),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(height: 8),
+            Text(
+              _searchController.text.isEmpty
+                  ? 'Belum ada berita yang dipublikasikan.\nSilakan cek kembali nanti.'
+                  : 'Tidak ada berita yang cocok dengan\npencarian Anda.',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontSize: 14,
+                color: const Color(0xFF636E72),
+              ),
+            ),
+            if (_searchController.text.isNotEmpty) ...[
+              const SizedBox(height: 24),
+              TextButton(
+                onPressed: () {
+                  _searchController.clear();
+                  _applySearch();
+                },
+                child: Text(
+                  'Hapus Pencarian',
+                  style: GoogleFonts.poppins(
+                    color: const Color(0xFF6C5CE7),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }
