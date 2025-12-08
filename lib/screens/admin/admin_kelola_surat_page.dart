@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_kelola_surat_page.dart
+// lib/screens/admin/admin_kelola_surat_page.dart - MODERN CLEAN DESIGN
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../models/surat_model.dart';
@@ -14,26 +14,39 @@ class AdminKelolaSuratPage extends StatefulWidget {
   State<AdminKelolaSuratPage> createState() => _AdminKelolaSuratPageState();
 }
 
-class _AdminKelolaSuratPageState extends State<AdminKelolaSuratPage> {
+class _AdminKelolaSuratPageState extends State<AdminKelolaSuratPage> with SingleTickerProviderStateMixin {
   List<SuratModel> _allSuratList = [];
   List<SuratModel> _filteredSuratList = [];
   bool _isLoading = true;
   bool _isError = false;
   
-  // Search & Filter
   final TextEditingController _searchController = TextEditingController();
   String _selectedFilter = 'semua';
+  
+  late AnimationController _animationController;
+  late Animation<double> _fadeAnimation;
+
   final List<Map<String, dynamic>> _filterOptions = [
-    {'value': 'semua', 'label': 'Semua Status'},
-    {'value': 'pending', 'label': 'Menunggu'},
-    {'value': 'diproses', 'label': 'Diproses'},
-    {'value': 'selesai', 'label': 'Selesai'},
-    {'value': 'ditolak', 'label': 'Ditolak'},
+    {'value': 'semua', 'label': 'Semua Status', 'color': Color(0xFF636E72)},
+    {'value': 'pending', 'label': 'Menunggu', 'color': Color(0xFFFFA502)},
+    {'value': 'diproses', 'label': 'Diproses', 'color': Color(0xFF6C5CE7)},
+    {'value': 'selesai', 'label': 'Selesai', 'color': Color(0xFF00D2D3)},
+    {'value': 'ditolak', 'label': 'Ditolak', 'color': Color(0xFFFF6B6B)},
   ];
 
   @override
   void initState() {
     super.initState();
+    
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
+    
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.easeOut),
+    );
+    
     _loadAllSurat();
     _searchController.addListener(_onSearchChanged);
   }
@@ -41,6 +54,7 @@ class _AdminKelolaSuratPageState extends State<AdminKelolaSuratPage> {
   @override
   void dispose() {
     _searchController.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -53,10 +67,7 @@ class _AdminKelolaSuratPageState extends State<AdminKelolaSuratPage> {
     
     setState(() {
       _filteredSuratList = _allSuratList.where((surat) {
-        // Filter by status
         bool statusMatch = _selectedFilter == 'semua' || surat.status == _selectedFilter;
-        
-        // Filter by search query
         bool searchMatch = searchQuery.isEmpty ||
             surat.jenisSurat.toLowerCase().contains(searchQuery) ||
             surat.keperluan.toLowerCase().contains(searchQuery) ||
@@ -75,196 +86,68 @@ class _AdminKelolaSuratPageState extends State<AdminKelolaSuratPage> {
 
     try {
       final surat = await SuratService.getAllSurat();
-      setState(() {
-        _allSuratList = surat;
-        _filteredSuratList = surat;
-      });
-    } catch (e) {
-      setState(() => _isError = true);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(
-              'Gagal memuat data surat: $e',
-              style: GoogleFonts.poppins(),
-            ),
-            backgroundColor: AppColors.errorColor,
-          ),
-        );
+        setState(() {
+          _allSuratList = surat;
+          _filteredSuratList = surat;
+        });
+        _animationController.forward(from: 0.0);
+      }
+    } catch (e) {
+      if (mounted) {
+        setState(() => _isError = true);
+        _showSnackBar('Gagal memuat data surat: $e', false);
       }
     } finally {
-      setState(() => _isLoading = false);
+      if (mounted) setState(() => _isLoading = false);
     }
+  }
+
+  void _showSnackBar(String message, bool success) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(
+          children: [
+            Icon(
+              success ? Icons.check_circle_rounded : Icons.error_rounded,
+              color: Colors.white,
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Text(
+                message,
+                style: GoogleFonts.poppins(fontWeight: FontWeight.w500),
+              ),
+            ),
+          ],
+        ),
+        backgroundColor: success ? const Color(0xFF00D2D3) : const Color(0xFFFF6B6B),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        margin: const EdgeInsets.all(16),
+        duration: const Duration(seconds: 3),
+      ),
+    );
   }
 
   Color _getStatusColor(String status) {
     switch (status) {
-      case 'pending': return const Color(0xFFFF9800);
-      case 'diproses': return AppColors.primaryBlue;
-      case 'selesai': return const Color(0xFF66BB6A);
-      case 'ditolak': return const Color(0xFFEF5350);
-      default: return const Color(0xFFFF9800);
+      case 'pending': return const Color(0xFFFFA502);
+      case 'diproses': return const Color(0xFF6C5CE7);
+      case 'selesai': return const Color(0xFF00D2D3);
+      case 'ditolak': return const Color(0xFFFF6B6B);
+      default: return const Color(0xFFFFA502);
     }
   }
 
   IconData _getStatusIcon(String status) {
     switch (status) {
-      case 'pending': return Icons.pending;
-      case 'diproses': return Icons.autorenew;
-      case 'selesai': return Icons.check_circle;
-      case 'ditolak': return Icons.cancel;
-      default: return Icons.pending;
+      case 'pending': return Icons.schedule_rounded;
+      case 'diproses': return Icons.autorenew_rounded;
+      case 'selesai': return Icons.check_circle_rounded;
+      case 'ditolak': return Icons.cancel_rounded;
+      default: return Icons.schedule_rounded;
     }
-  }
-
-  Widget _buildSuratCard(SuratModel surat, bool isSmallScreen) {
-    return Container(
-      margin: EdgeInsets.only(bottom: isSmallScreen ? 12 : 15),
-      child: GlassContainer(
-        blur: 10,
-        opacity: 0.2,
-        borderRadius: BorderRadius.circular(16),
-        child: ListTile(
-          contentPadding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-          leading: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              gradient: AppColors.primaryGradient,
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(_getStatusIcon(surat.status), color: Colors.white, size: 22),
-          ),
-          title: Text(
-            surat.jenisSurat,
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w600,
-              fontSize: isSmallScreen ? 14 : 15,
-              color: AppColors.darkNavy,
-            ),
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 4),
-              Text(
-                'Diajukan: ${_formatDate(surat.tanggalPengajuan)}',
-                style: GoogleFonts.poppins(
-                  fontSize: isSmallScreen ? 11 : 12,
-                  color: Colors.grey.shade600,
-                ),
-              ),
-              if (surat.keperluan.length > 50) ...[
-                const SizedBox(height: 2),
-                Text(
-                  '${surat.keperluan.substring(0, 50)}...',
-                  style: GoogleFonts.poppins(
-                    fontSize: isSmallScreen ? 10 : 11,
-                    color: Colors.grey.shade500,
-                  ),
-                ),
-              ] else if (surat.keperluan.isNotEmpty) ...[
-                const SizedBox(height: 2),
-                Text(
-                  surat.keperluan,
-                  style: GoogleFonts.poppins(
-                    fontSize: isSmallScreen ? 10 : 11,
-                    color: Colors.grey.shade500,
-                  ),
-                ),
-              ],
-            ],
-          ),
-          trailing: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-            decoration: BoxDecoration(
-              color: _getStatusColor(surat.status).withOpacity(0.2),
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: _getStatusColor(surat.status), width: 1),
-            ),
-            child: Text(
-              surat.statusText.toUpperCase(),
-              style: GoogleFonts.poppins(
-                fontSize: isSmallScreen ? 9 : 10,
-                fontWeight: FontWeight.w600,
-                color: _getStatusColor(surat.status),
-              ),
-            ),
-          ),
-onTap: () {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (context) => AdminDetailSuratPage(
-        suratId: surat.id, // atau surat['id']
-      ),
-    ),
-  );
-},
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSearchAndFilter(bool isSmallScreen) {
-    return GlassContainer(
-      blur: 10,
-      opacity: 0.2,
-      borderRadius: BorderRadius.circular(16),
-      child: Container(
-        padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-        child: Column(
-          children: [
-            // Search Bar
-            TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Cari surat...',
-                hintStyle: GoogleFonts.poppins(),
-                prefixIcon: const Icon(Icons.search, color: Colors.grey),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
-                ),
-                filled: true,
-                fillColor: Colors.white.withOpacity(0.9),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-              ),
-            ),
-            const SizedBox(height: 12),
-            // Filter Dropdown
-            DropdownButtonFormField<String>(
-  value: _selectedFilter,
-  items: _filterOptions.map((filter) {
-    return DropdownMenuItem<String>(
-      value: filter['value'] as String,  // pastikan String
-      child: Text(
-        filter['label'] as String,
-        style: GoogleFonts.poppins(),
-      ),
-    );
-  }).toList(),
-
-              onChanged: (value) {
-                setState(() {
-                  _selectedFilter = value!;
-                  _applyFilters();
-                });
-              },
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none,
-                ),
-                filled: true,
-                fillColor: Colors.white.withOpacity(0.9),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-                hintText: 'Filter Status',
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 
   String _formatDate(DateTime date) {
@@ -275,75 +158,468 @@ onTap: () {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final isSmallScreen = screenWidth < 360;
+    final isTablet = screenWidth >= 600;
+    final maxWidth = isTablet ? 800.0 : double.infinity;
 
     return Scaffold(
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
-        title: Text(
-          'Kelola Surat Warga',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            color: AppColors.darkNavy,
-          ),
-        ),
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: AppColors.darkNavy),
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: const Color(0xFF2D3436),
+            size: isSmallScreen ? 20 : 22,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
+        title: Text(
+          'Kelola Surat Warga',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF2D3436),
+            fontSize: isSmallScreen ? 16 : 18,
+          ),
+        ),
+        centerTitle: false,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh, color: AppColors.darkNavy),
+            icon: Icon(
+              Icons.refresh_rounded,
+              color: const Color(0xFF6C5CE7),
+              size: isSmallScreen ? 22 : 24,
+            ),
             onPressed: _loadAllSurat,
+            tooltip: 'Refresh',
+          ),
+          SizedBox(width: isSmallScreen ? 4 : 8),
+        ],
+      ),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: maxWidth),
+          child: Column(
+            children: [
+              // Header Stats Card
+              _buildHeaderStats(isSmallScreen),
+              
+              // Search & Filter Section
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? 16 : 20,
+                  vertical: isSmallScreen ? 12 : 16,
+                ),
+                child: _buildSearchAndFilter(isSmallScreen),
+              ),
+              
+              // Main Content
+              Expanded(
+                child: _isLoading
+                    ? _buildLoadingState(isSmallScreen)
+                    : _isError
+                        ? _buildErrorState(isSmallScreen)
+                        : _filteredSuratList.isEmpty
+                            ? _buildEmptyState(isSmallScreen)
+                            : _buildSuratList(isSmallScreen),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildHeaderStats(bool isSmallScreen) {
+    final pendingCount = _allSuratList.where((s) => s.status == 'pending').length;
+    final diprosesCount = _allSuratList.where((s) => s.status == 'diproses').length;
+    final selesaiCount = _allSuratList.where((s) => s.status == 'selesai').length;
+
+    return Container(
+      margin: EdgeInsets.all(isSmallScreen ? 16 : 20),
+      padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [ Color(0xFF00D2D3), Color(0xFFA29BFE)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(isSmallScreen ? 16 : 20),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF00D2D3).withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
           ),
         ],
       ),
-      body: Container(
-        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
-            child: Column(
-              children: [
-                // Search & Filter Section
-                _buildSearchAndFilter(isSmallScreen),
-                const SizedBox(height: 16),
-                
-                // Results Count
-                if (!_isLoading && !_isError)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Ditemukan ${_filteredSuratList.length} surat',
-                      style: GoogleFonts.poppins(
-                        fontSize: isSmallScreen ? 12 : 14,
-                        color: Colors.grey.shade600,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Icon(
+                Icons.dashboard_rounded,
+                color: Colors.white,
+                size: isSmallScreen ? 22 : 24,
+              ),
+              SizedBox(width: isSmallScreen ? 8 : 12),
+              Text(
+                'Statistik Surat',
+                style: GoogleFonts.poppins(
+                  fontSize: isSmallScreen ? 15 : 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: isSmallScreen ? 14 : 16),
+          Row(
+            children: [
+              Expanded(
+                child: _buildStatItem(
+                  label: 'Menunggu',
+                  count: pendingCount,
+                  icon: Icons.schedule_rounded,
+                  isSmallScreen: isSmallScreen,
+                ),
+              ),
+              SizedBox(width: isSmallScreen ? 10 : 12),
+              Expanded(
+                child: _buildStatItem(
+                  label: 'Diproses',
+                  count: diprosesCount,
+                  icon: Icons.autorenew_rounded,
+                  isSmallScreen: isSmallScreen,
+                ),
+              ),
+              SizedBox(width: isSmallScreen ? 10 : 12),
+              Expanded(
+                child: _buildStatItem(
+                  label: 'Selesai',
+                  count: selesaiCount,
+                  icon: Icons.check_circle_rounded,
+                  isSmallScreen: isSmallScreen,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStatItem({
+    required String label,
+    required int count,
+    required IconData icon,
+    required bool isSmallScreen,
+  }) {
+    return Container(
+      padding: EdgeInsets.all(isSmallScreen ? 10 : 12),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.25),
+        borderRadius: BorderRadius.circular(isSmallScreen ? 10 : 12),
+      ),
+      child: Column(
+        children: [
+          Icon(
+            icon,
+            color: Colors.white,
+            size: isSmallScreen ? 20 : 24,
+          ),
+          SizedBox(height: isSmallScreen ? 6 : 8),
+          Text(
+            '$count',
+            style: GoogleFonts.poppins(
+              fontSize: isSmallScreen ? 18 : 22,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+          SizedBox(height: isSmallScreen ? 2 : 4),
+          Text(
+            label,
+            style: GoogleFonts.poppins(
+              fontSize: isSmallScreen ? 10 : 11,
+              color: Colors.white.withOpacity(0.9),
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchAndFilter(bool isSmallScreen) {
+    return Column(
+      children: [
+        // Search Bar
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(isSmallScreen ? 12 : 14),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.04),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
+          ),
+          child: TextField(
+            controller: _searchController,
+            style: GoogleFonts.poppins(
+              fontSize: isSmallScreen ? 13 : 14,
+              color: const Color(0xFF2D3436),
+            ),
+            decoration: InputDecoration(
+              hintText: 'Cari berdasarkan jenis surat atau keperluan...',
+              hintStyle: GoogleFonts.poppins(
+                fontSize: isSmallScreen ? 13 : 14,
+                color: const Color(0xFF636E72),
+              ),
+              prefixIcon: Icon(
+                Icons.search_rounded,
+                color: const Color(0xFF6C5CE7),
+                size: isSmallScreen ? 20 : 22,
+              ),
+              suffixIcon: _searchController.text.isNotEmpty
+                  ? IconButton(
+                      icon: Icon(
+                        Icons.clear_rounded,
+                        color: const Color(0xFF636E72),
+                        size: isSmallScreen ? 20 : 22,
                       ),
+                      onPressed: () {
+                        _searchController.clear();
+                      },
+                    )
+                  : null,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(isSmallScreen ? 12 : 14),
+                borderSide: BorderSide.none,
+              ),
+              filled: true,
+              fillColor: Colors.white,
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: isSmallScreen ? 12 : 16,
+                vertical: isSmallScreen ? 14 : 16,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: isSmallScreen ? 10 : 12),
+        
+        // Filter Chips
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
+          child: Row(
+            children: _filterOptions.map((filter) {
+              final isSelected = _selectedFilter == filter['value'];
+              final color = filter['color'] as Color;
+              
+              return Padding(
+                padding: EdgeInsets.only(right: isSmallScreen ? 8 : 10),
+                child: FilterChip(
+                  selected: isSelected,
+                  label: Text(
+                    filter['label'] as String,
+                    style: GoogleFonts.poppins(
+                      fontSize: isSmallScreen ? 11 : 12,
+                      fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                      color: isSelected ? Colors.white : color,
                     ),
                   ),
-                const SizedBox(height: 8),
+                  backgroundColor: Colors.white,
+                  selectedColor: color,
+                  checkmarkColor: Colors.white,
+                  side: BorderSide(
+                    color: isSelected ? color : color.withOpacity(0.3),
+                    width: isSelected ? 2 : 1,
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isSmallScreen ? 10 : 12,
+                    vertical: isSmallScreen ? 6 : 8,
+                  ),
+                  onSelected: (selected) {
+                    setState(() {
+                      _selectedFilter = filter['value'] as String;
+                      _applyFilters();
+                    });
+                  },
+                ),
+              );
+            }).toList(),
+          ),
+        ),
+        
+        // Results Count
+        if (!_isLoading && !_isError) ...[
+          SizedBox(height: isSmallScreen ? 10 : 12),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Menampilkan ${_filteredSuratList.length} dari ${_allSuratList.length} surat',
+              style: GoogleFonts.poppins(
+                fontSize: isSmallScreen ? 11 : 12,
+                color: const Color(0xFF636E72),
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildSuratList(bool isSmallScreen) {
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: RefreshIndicator(
+        onRefresh: _loadAllSurat,
+        color: const Color(0xFF6C5CE7),
+        child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          padding: EdgeInsets.symmetric(
+            horizontal: isSmallScreen ? 16 : 20,
+            vertical: isSmallScreen ? 8 : 12,
+          ),
+          itemCount: _filteredSuratList.length,
+          itemBuilder: (context, index) {
+            return _buildSuratCard(_filteredSuratList[index], isSmallScreen);
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSuratCard(SuratModel surat, bool isSmallScreen) {
+    final statusColor = _getStatusColor(surat.status);
+    final statusIcon = _getStatusIcon(surat.status);
+
+    return Container(
+      margin: EdgeInsets.only(bottom: isSmallScreen ? 12 : 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(isSmallScreen ? 14 : 16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(isSmallScreen ? 14 : 16),
+          onTap: () async {
+            final result = await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AdminDetailSuratPage(suratId: surat.id),
+              ),
+            );
+            
+            if (result == true) {
+              _loadAllSurat();
+            }
+          },
+          child: Padding(
+            padding: EdgeInsets.all(isSmallScreen ? 14 : 16),
+            child: Row(
+              children: [
+                // Icon Container
+                Container(
+                  width: isSmallScreen ? 50 : 56,
+                  height: isSmallScreen ? 50 : 56,
+                  decoration: BoxDecoration(
+                    color: statusColor.withOpacity(0.1),
+                    borderRadius: BorderRadius.circular(isSmallScreen ? 12 : 14),
+                  ),
+                  child: Icon(
+                    statusIcon,
+                    color: statusColor,
+                    size: isSmallScreen ? 24 : 28,
+                  ),
+                ),
+                SizedBox(width: isSmallScreen ? 12 : 16),
                 
-                // Main Content
+                // Content
                 Expanded(
-                  child: _isLoading
-                      ? const Center(
-                          child: CircularProgressIndicator(color: AppColors.primaryBlue),
-                        )
-                      : _isError
-                          ? _buildErrorState()
-                          : _filteredSuratList.isEmpty
-                              ? _buildEmptyState(isSmallScreen)
-                              : RefreshIndicator(
-                                  onRefresh: _loadAllSurat,
-                                  color: AppColors.primaryBlue,
-                                  child: ListView.builder(
-                                    physics: const BouncingScrollPhysics(),
-                                    itemCount: _filteredSuratList.length,
-                                    itemBuilder: (context, index) {
-                                      return _buildSuratCard(_filteredSuratList[index], isSmallScreen);
-                                    },
-                                  ),
-                                ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        surat.jenisSurat,
+                        style: GoogleFonts.poppins(
+                          fontSize: isSmallScreen ? 14 : 15,
+                          fontWeight: FontWeight.w600,
+                          color: const Color(0xFF2D3436),
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: isSmallScreen ? 4 : 6),
+                      Text(
+                        surat.keperluan,
+                        style: GoogleFonts.poppins(
+                          fontSize: isSmallScreen ? 11 : 12,
+                          color: const Color(0xFF636E72),
+                        ),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      SizedBox(height: isSmallScreen ? 6 : 8),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.calendar_today_rounded,
+                            size: isSmallScreen ? 12 : 14,
+                            color: const Color(0xFF636E72),
+                          ),
+                          SizedBox(width: isSmallScreen ? 4 : 6),
+                          Text(
+                            _formatDate(surat.tanggalPengajuan),
+                            style: GoogleFonts.poppins(
+                              fontSize: isSmallScreen ? 10 : 11,
+                              color: const Color(0xFF636E72),
+                            ),
+                          ),
+                          SizedBox(width: isSmallScreen ? 12 : 16),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isSmallScreen ? 8 : 10,
+                              vertical: isSmallScreen ? 3 : 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: statusColor.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(isSmallScreen ? 6 : 8),
+                            ),
+                            child: Text(
+                              surat.statusText.toUpperCase(),
+                              style: GoogleFonts.poppins(
+                                fontSize: isSmallScreen ? 9 : 10,
+                                fontWeight: FontWeight.w600,
+                                color: statusColor,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                
+                // Arrow Icon
+                Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: isSmallScreen ? 16 : 18,
+                  color: const Color(0xFF636E72),
                 ),
               ],
             ),
@@ -353,46 +629,21 @@ onTap: () {
     );
   }
 
-  Widget _buildErrorState() {
+  Widget _buildLoadingState(bool isSmallScreen) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: AppColors.errorColor,
+          const CircularProgressIndicator(
+            color: Color(0xFF6C5CE7),
+            strokeWidth: 3,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: isSmallScreen ? 16 : 20),
           Text(
-            'Gagal memuat data',
+            'Memuat data surat...',
             style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Silakan coba lagi',
-            style: GoogleFonts.poppins(
-              color: Colors.grey.shade600,
-            ),
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _loadAllSurat,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryBlue,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            ),
-            child: Text(
-              'Coba Lagi',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+              fontSize: isSmallScreen ? 13 : 14,
+              color: const Color(0xFF636E72),
             ),
           ),
         ],
@@ -400,37 +651,169 @@ onTap: () {
     );
   }
 
-  Widget _buildEmptyState(bool isSmallScreen) {
+  Widget _buildErrorState(bool isSmallScreen) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(
-            Icons.description_outlined,
-            size: 64,
-            color: Colors.grey.shade400,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            _searchController.text.isEmpty && _selectedFilter == 'semua'
-                ? 'Belum ada surat'
-                : 'Tidak ada surat yang sesuai',
-            style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
+      child: Padding(
+        padding: EdgeInsets.all(isSmallScreen ? 24 : 32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: isSmallScreen ? 70 : 80,
+              height: isSmallScreen ? 70 : 80,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF6B6B).withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                Icons.error_outline_rounded,
+                size: isSmallScreen ? 35 : 40,
+                color: const Color(0xFFFF6B6B),
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            _searchController.text.isEmpty && _selectedFilter == 'semua'
-                ? 'Tidak ada pengajuan surat dari warga'
-                : 'Coba ubah pencarian atau filter',
-            style: GoogleFonts.poppins(
-              color: Colors.grey.shade600,
+            SizedBox(height: isSmallScreen ? 16 : 20),
+            Text(
+              'Gagal Memuat Data',
+              style: GoogleFonts.poppins(
+                fontSize: isSmallScreen ? 16 : 18,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF2D3436),
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: isSmallScreen ? 6 : 8),
+            Text(
+              'Terjadi kesalahan saat memuat data surat',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontSize: isSmallScreen ? 12 : 13,
+                color: const Color(0xFF636E72),
+              ),
+            ),
+            SizedBox(height: isSmallScreen ? 24 : 30),
+            Container(
+              height: isSmallScreen ? 44 : 48,
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [Color(0xFF6C5CE7), Color(0xFFA29BFE)],
+                ),
+                borderRadius: BorderRadius.circular(isSmallScreen ? 10 : 12),
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color(0xFF6C5CE7).withOpacity(0.3),
+                    blurRadius: 15,
+                    offset: const Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: ElevatedButton(
+                onPressed: _loadAllSurat,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                  shadowColor: Colors.transparent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(isSmallScreen ? 10 : 12),
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isSmallScreen ? 24 : 32,
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      Icons.refresh_rounded,
+                      color: Colors.white,
+                      size: isSmallScreen ? 18 : 20,
+                    ),
+                    SizedBox(width: isSmallScreen ? 6 : 8),
+                    Text(
+                      'Coba Lagi',
+                      style: GoogleFonts.poppins(
+                        fontSize: isSmallScreen ? 13 : 14,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState(bool isSmallScreen) {
+    final isFiltering = _searchController.text.isNotEmpty || _selectedFilter != 'semua';
+    
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(isSmallScreen ? 24 : 32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: isSmallScreen ? 70 : 80,
+              height: isSmallScreen ? 70 : 80,
+              decoration: BoxDecoration(
+                color: const Color(0xFF636E72).withOpacity(0.1),
+                shape: BoxShape.circle,
+              ),
+              child: Icon(
+                isFiltering ? Icons.search_off_rounded : Icons.description_outlined,
+                size: isSmallScreen ? 35 : 40,
+                color: const Color(0xFF636E72),
+              ),
+            ),
+            SizedBox(height: isSmallScreen ? 16 : 20),
+            Text(
+              isFiltering ? 'Tidak Ada Hasil' : 'Belum Ada Surat',
+              style: GoogleFonts.poppins(
+                fontSize: isSmallScreen ? 16 : 18,
+                fontWeight: FontWeight.w700,
+                color: const Color(0xFF2D3436),
+              ),
+            ),
+            SizedBox(height: isSmallScreen ? 6 : 8),
+            Text(
+              isFiltering
+                  ? 'Tidak ada surat yang sesuai dengan pencarian atau filter Anda'
+                  : 'Belum ada pengajuan surat dari warga',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontSize: isSmallScreen ? 12 : 13,
+                color: const Color(0xFF636E72),
+              ),
+            ),
+            if (isFiltering) ...[
+              SizedBox(height: isSmallScreen ? 24 : 30),
+              TextButton.icon(
+                onPressed: () {
+                  _searchController.clear();
+                  setState(() {
+                    _selectedFilter = 'semua';
+                    _applyFilters();
+                  });
+                },
+                icon: Icon(
+                  Icons.clear_all_rounded,
+                  size: isSmallScreen ? 18 : 20,
+                ),
+                label: Text(
+                  'Reset Filter',
+                  style: GoogleFonts.poppins(
+                    fontSize: isSmallScreen ? 13 : 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                style: TextButton.styleFrom(
+                  foregroundColor: const Color(0xFF6C5CE7),
+                ),
+              ),
+            ],
+          ],
+        ),
       ),
     );
   }

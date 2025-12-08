@@ -1,4 +1,4 @@
-// lib/screens/admin/admin_detail_surat_page.dart - UPDATED WITH FILE UPLOAD
+// lib/screens/admin/admin_detail_surat_page.dart
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +24,6 @@ class _AdminDetailSuratPageState extends State<AdminDetailSuratPage> {
   bool _isLoading = true;
   bool _isUpdating = false;
 
-  // ✅ ENHANCEMENT: FORM STATE FOR ADMIN
   PlatformFile? _fileHasil;
   final _catatanController = TextEditingController();
   String _selectedStatus = 'pending';
@@ -33,6 +32,12 @@ class _AdminDetailSuratPageState extends State<AdminDetailSuratPage> {
   void initState() {
     super.initState();
     _loadDetailSurat();
+  }
+
+  @override
+  void dispose() {
+    _catatanController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadDetailSurat() async {
@@ -46,35 +51,41 @@ class _AdminDetailSuratPageState extends State<AdminDetailSuratPage> {
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Gagal memuat detail surat: $e'),
-          backgroundColor: Colors.red,
+          content: Row(
+            children: [
+              const Icon(Icons.error_rounded, color: Colors.white),
+              const SizedBox(width: 12),
+              Text('Gagal memuat detail surat'),
+            ],
+          ),
+          backgroundColor: const Color(0xFFFF6B6B),
         ),
       );
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() => _isLoading = false);
     }
   }
 
-  // ✅ ENHANCEMENT: UPDATE STATUS DENGAN FILE HASIL
   Future<void> _updateStatus() async {
     if (_catatanController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Catatan admin tidak boleh kosong'),
-          backgroundColor: Colors.red,
+          content: Row(
+            children: [
+              const Icon(Icons.warning_rounded, color: Colors.white),
+              const SizedBox(width: 12),
+              const Text('Catatan admin tidak boleh kosong'),
+            ],
+          ),
+          backgroundColor: const Color(0xFFFFA502),
         ),
       );
       return;
     }
 
-    setState(() {
-      _isUpdating = true;
-    });
+    setState(() => _isUpdating = true);
 
     try {
-      // Validasi file hasil jika ada
       if (_fileHasil != null) {
         final validation = SuratService.validateFile(_fileHasil!);
         if (!validation['isValid']) {
@@ -82,7 +93,7 @@ class _AdminDetailSuratPageState extends State<AdminDetailSuratPage> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(errors.values.first),
-              backgroundColor: Colors.red,
+              backgroundColor: const Color(0xFFFF6B6B),
             ),
           );
           return;
@@ -98,417 +109,685 @@ class _AdminDetailSuratPageState extends State<AdminDetailSuratPage> {
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Status surat berhasil diupdate'),
-          backgroundColor: Colors.green,
+          content: Row(
+            children: [
+              const Icon(Icons.check_circle_rounded, color: Colors.white),
+              const SizedBox(width: 12),
+              const Text('Status surat berhasil diupdate'),
+            ],
+          ),
+          backgroundColor: const Color(0xFF00D2D3),
         ),
       );
 
-      // Reload data
       await _loadDetailSurat();
-      
-      // Reset file hasil setelah upload
-      setState(() {
-        _fileHasil = null;
-      });
-
+      setState(() => _fileHasil = null);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Gagal update status: $e'),
-          backgroundColor: Colors.red,
+          backgroundColor: const Color(0xFFFF6B6B),
         ),
       );
     } finally {
-      setState(() {
-        _isUpdating = false;
-      });
+      setState(() => _isUpdating = false);
     }
   }
 
-  // ✅ ENHANCEMENT: DOWNLOAD FILE
-  Future<void> _downloadFile(String? fileUrl) async {
-    if (fileUrl == null) return;
-    
-    try {
-      if (await canLaunchUrl(Uri.parse(fileUrl))) {
-        await launchUrl(Uri.parse(fileUrl));
-      } else {
-        throw 'Tidak dapat membuka file';
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Gagal membuka file: $e'),
-          backgroundColor: Colors.red,
-        ),
-      );
-    }
-  }
-
-  // ✅ ENHANCEMENT: STATUS COLOR
   Color _getStatusColor(String status) {
     switch (status) {
-      case 'pending': return Colors.orange;
-      case 'diproses': return Colors.blue;
-      case 'selesai': return Colors.green;
-      case 'ditolak': return Colors.red;
-      default: return Colors.grey;
+      case 'pending':
+        return const Color(0xFFFFA502);
+      case 'diproses':
+        return const Color(0xFF6C5CE7);
+      case 'selesai':
+        return const Color(0xFF00D2D3);
+      case 'ditolak':
+        return const Color(0xFFFF6B6B);
+      default:
+        return const Color(0xFFFFA502);
+    }
+  }
+
+  IconData _getStatusIcon(String status) {
+    switch (status) {
+      case 'pending':
+        return Icons.schedule_rounded;
+      case 'diproses':
+        return Icons.autorenew_rounded;
+      case 'selesai':
+        return Icons.check_circle_rounded;
+      case 'ditolak':
+        return Icons.cancel_rounded;
+      default:
+        return Icons.schedule_rounded;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isSmallScreen = screenWidth < 360;
-
     if (_isLoading) {
       return Scaffold(
-        backgroundColor: AppColors.backgroundLight,
+        backgroundColor: const Color(0xFFF5F7FA),
         appBar: AppBar(
-          title: Text(
-            'Detail Surat',
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
-            ),
-          ),
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           elevation: 0,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: AppColors.darkNavy),
+            icon: const Icon(Icons.arrow_back_ios_rounded, color: Color(0xFF2D3436)),
             onPressed: () => Navigator.pop(context),
           ),
         ),
-        body: Center(
-          child: CircularProgressIndicator(
-            color: AppColors.primaryBlue,
-          ),
+        body: const Center(
+          child: CircularProgressIndicator(color: Color(0xFF6C5CE7)),
         ),
       );
     }
 
     if (_surat == null) {
       return Scaffold(
-        backgroundColor: AppColors.backgroundLight,
+        backgroundColor: const Color(0xFFF5F7FA),
         appBar: AppBar(
-          title: Text('Detail Surat'),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_rounded, color: Color(0xFF2D3436)),
+            onPressed: () => Navigator.pop(context),
+          ),
         ),
         body: Center(
-          child: Text(
-            'Surat tidak ditemukan',
-            style: GoogleFonts.poppins(),
-          ),
+          child: Text('Surat tidak ditemukan', style: GoogleFonts.poppins()),
         ),
       );
     }
 
     return Scaffold(
-      backgroundColor: AppColors.backgroundLight,
+      backgroundColor: const Color(0xFFF5F7FA),
       appBar: AppBar(
-        title: Text(
-          'Detail Surat',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            color: AppColors.darkNavy,
-          ),
-        ),
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppColors.darkNavy),
+          icon: const Icon(Icons.arrow_back_ios_rounded, color: Color(0xFF2D3436)),
           onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Detail & Update Surat',
+          style: GoogleFonts.poppins(
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF2D3436),
+          ),
         ),
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+        physics: const BouncingScrollPhysics(),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ✅ SURAT INFO CARD
-            GlassContainer(
-              blur: 10,
-              opacity: 0.1,
-              child: Container(
-                padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Jenis Surat',
-                          style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.w600,
-                            color: AppColors.darkNavy,
-                            fontSize: isSmallScreen ? 14 : 15,
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: isSmallScreen ? 8 : 12,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: _getStatusColor(_surat!.status).withOpacity(0.1),
-                            borderRadius: BorderRadius.circular(12),
-                            border: Border.all(
-                              color: _getStatusColor(_surat!.status),
-                            ),
-                          ),
-                          child: Text(
-                            _surat!.statusText.toUpperCase(),
-                            style: GoogleFonts.poppins(
-                              fontSize: isSmallScreen ? 10 : 11,
-                              fontWeight: FontWeight.bold,
-                              color: _getStatusColor(_surat!.status),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      _surat!.jenisSurat,
-                      style: GoogleFonts.poppins(
-                        fontSize: isSmallScreen ? 16 : 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primaryBlue,
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    
-                    Text(
-                      'Keperluan',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.darkNavy,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      _surat!.keperluan,
-                      style: GoogleFonts.poppins(
-                        color: Colors.grey.shade700,
-                      ),
-                    ),
-                    SizedBox(height: 12),
-                    
-                    Text(
-                      'Tanggal Pengajuan',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.darkNavy,
-                      ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      '${_surat!.tanggalPengajuan.day}/${_surat!.tanggalPengajuan.month}/${_surat!.tanggalPengajuan.year}',
-                      style: GoogleFonts.poppins(
-                        color: Colors.grey.shade600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(height: isSmallScreen ? 20 : 25),
-
-            // ✅ FILE PENDUKUNG SECTION
+            _buildStatusCard(),
+            const SizedBox(height: 16),
+            _buildInfoCard(),
             if (_surat!.hasFilePendukung) ...[
-              Text(
-                'File Pendukung',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.darkNavy,
-                  fontSize: isSmallScreen ? 16 : 18,
-                ),
-              ),
-              SizedBox(height: 8),
-              FileDownloadWidget(
-                fileName: _surat!.filePendukung!,
-                fileType: 'pendukung',
-                label: 'File Pendukung - ${_surat!.filePendukungType}',
-              ),
-              SizedBox(height: isSmallScreen ? 20 : 25),
+              const SizedBox(height: 16),
+              _buildFilePendukungCard(),
             ],
-
-            // ✅ ADMIN ACTION SECTION
-            Text(
-              'Update Status Surat',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.bold,
-                color: AppColors.darkNavy,
-                fontSize: isSmallScreen ? 16 : 18,
-              ),
-            ),
-            SizedBox(height: 12),
-
-            // STATUS DROPDOWN
-            GlassContainer(
-              blur: 8,
-              opacity: 0.05,
-              child: DropdownButtonFormField<String>(
-                value: _selectedStatus,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: isSmallScreen ? 12 : 16,
-                    vertical: isSmallScreen ? 14 : 16,
-                  ),
-                  labelText: 'Status Surat',
-                  labelStyle: GoogleFonts.poppins(
-                    color: AppColors.darkNavy,
-                  ),
-                ),
-                items: [
-                  DropdownMenuItem(
-                    value: 'pending',
-                    child: Text('Menunggu', style: GoogleFonts.poppins()),
-                  ),
-                  DropdownMenuItem(
-                    value: 'diproses',
-                    child: Text('Diproses', style: GoogleFonts.poppins()),
-                  ),
-                  DropdownMenuItem(
-                    value: 'selesai',
-                    child: Text('Selesai', style: GoogleFonts.poppins()),
-                  ),
-                  DropdownMenuItem(
-                    value: 'ditolak',
-                    child: Text('Ditolak', style: GoogleFonts.poppins()),
-                  ),
-                ],
-                onChanged: (value) {
-                  setState(() {
-                    _selectedStatus = value!;
-                  });
-                },
-              ),
-            ),
-            SizedBox(height: isSmallScreen ? 16 : 20),
-
-            // CATATAN ADMIN
-            Text(
-              'Catatan Admin *',
-              style: GoogleFonts.poppins(
-                fontWeight: FontWeight.w600,
-                color: AppColors.darkNavy,
-                fontSize: isSmallScreen ? 14 : 15,
-              ),
-            ),
-            SizedBox(height: 8),
-            GlassContainer(
-              blur: 8,
-              opacity: 0.05,
-              child: TextFormField(
-                controller: _catatanController,
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.all(isSmallScreen ? 12 : 16),
-                  hintText: 'Berikan catatan untuk pemohon...',
-                  hintStyle: GoogleFonts.poppins(
-                    color: Colors.grey.shade500,
-                  ),
-                ),
-                maxLines: 3,
-                style: GoogleFonts.poppins(
-                  fontSize: isSmallScreen ? 13 : 14,
-                ),
-              ),
-            ),
-            SizedBox(height: isSmallScreen ? 20 : 25),
-
-            // ✅ FILE HASIL UPLOAD (Hanya untuk status selesai)
-            if (_selectedStatus == 'selesai') ...[
-              Text(
-                'File Hasil (Opsional)',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w600,
-                  color: AppColors.darkNavy,
-                  fontSize: isSmallScreen ? 14 : 15,
-                ),
-              ),
-              SizedBox(height: 8),
-              Text(
-                'Upload surat hasil yang sudah ditandatangani',
-                style: GoogleFonts.poppins(
-                  fontSize: isSmallScreen ? 11 : 12,
-                  color: Colors.grey.shade600,
-                ),
-              ),
-              SizedBox(height: 8),
-              FilePickerWidget(
-                onFileSelected: (file) {
-                  setState(() {
-                    _fileHasil = file;
-                  });
-                },
-                label: 'Unggah file hasil',
-              ),
-              SizedBox(height: isSmallScreen ? 20 : 25),
-            ],
-
-            // ✅ UPDATE BUTTON
-            ElevatedButton(
-              onPressed: _isUpdating ? null : _updateStatus,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primaryBlue,
-                foregroundColor: Colors.white,
-                padding: EdgeInsets.symmetric(
-                  vertical: isSmallScreen ? 14 : 16,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                elevation: 2,
-              ),
-              child: _isUpdating
-                  ? SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 2,
-                        color: Colors.white,
-                      ),
-                    )
-                  : Text(
-                      'Update Status',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.w600,
-                        fontSize: isSmallScreen ? 14 : 15,
-                      ),
-                    ),
-            ),
-            SizedBox(height: isSmallScreen ? 20 : 25),
-
-            // ✅ FILE HASIL SECTION (Jika sudah ada)
+            const SizedBox(height: 24),
+            _buildUpdateSection(),
             if (_surat!.hasFileHasil) ...[
-              Text(
-                'File Hasil',
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.darkNavy,
-                  fontSize: isSmallScreen ? 16 : 18,
-                ),
-              ),
-              SizedBox(height: 8),
-              FileDownloadWidget(
-                fileName: _surat!.fileHasil!,
-                fileType: 'hasil',
-                label: 'File Hasil - ${_surat!.fileHasilType}',
-              ),
-              SizedBox(height: isSmallScreen ? 20 : 25),
+              const SizedBox(height: 16),
+              _buildFileHasilCard(),
             ],
+            const SizedBox(height: 20),
           ],
         ),
       ),
     );
   }
 
-  @override
-  void dispose() {
-    _catatanController.dispose();
-    super.dispose();
+  Widget _buildStatusCard() {
+    final statusColor = _getStatusColor(_surat!.status);
+    final statusIcon = _getStatusIcon(_surat!.status);
+
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [statusColor, statusColor.withOpacity(0.8)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: statusColor.withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          Container(
+            width: 70,
+            height: 70,
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.25),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(statusIcon, color: Colors.white, size: 35),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            _surat!.jenisSurat,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.poppins(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: Colors.white,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.25),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Text(
+              _surat!.statusText.toUpperCase(),
+              style: GoogleFonts.poppins(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+                letterSpacing: 1,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoCard() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                width: 4,
+                height: 20,
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF6C5CE7), Color(0xFFA29BFE)],
+                  ),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                'Informasi Surat',
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF2D3436),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          _buildInfoRow(
+            icon: Icons.person_rounded,
+            label: 'Pemohon',
+            value: _surat!.namaPemohon ?? 'N/A',
+          ),
+          const SizedBox(height: 12),
+          _buildInfoRow(
+            icon: Icons.description_rounded,
+            label: 'Keperluan',
+            value: _surat!.keperluan,
+          ),
+          const SizedBox(height: 12),
+          _buildInfoRow(
+            icon: Icons.calendar_today_rounded,
+            label: 'Tanggal Pengajuan',
+            value: '${_surat!.tanggalPengajuan.day}/${_surat!.tanggalPengajuan.month}/${_surat!.tanggalPengajuan.year}',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInfoRow({
+    required IconData icon,
+    required String label,
+    required String value,
+  }) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: const Color(0xFF6C5CE7).withOpacity(0.1),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Icon(icon, color: const Color(0xFF6C5CE7), size: 18),
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  color: const Color(0xFF636E72),
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                value,
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xFF2D3436),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFilePendukungCard() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.04),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: const Color(0xFF6C5CE7).withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.attach_file_rounded,
+                  color: Color(0xFF6C5CE7),
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                'File Pendukung',
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF2D3436),
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          FileDownloadWidget(
+            fileName: _surat!.filePendukung!,
+            fileType: 'pendukung',
+            label: 'File Pendukung - ${_surat!.filePendukungType}',
+          ),
+        ],
+      ),
+    );
+  }
+ Widget _buildUpdateSection() {
+    return Container(
+      padding: const EdgeInsets.all(24),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF6C5CE7), Color(0xFFA29BFE)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF6C5CE7).withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.25),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.admin_panel_settings_rounded,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                'Update Status Surat',
+                style: GoogleFonts.poppins(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          
+          // Status Dropdown
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Status Surat',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: DropdownButtonFormField<String>(
+                  value: _selectedStatus,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      value: 'pending',
+                      child: Text('⏳ Menunggu', style: GoogleFonts.poppins()),
+                    ),
+                    DropdownMenuItem(
+                      value: 'diproses',
+                      child: Text('⚙️ Diproses', style: GoogleFonts.poppins()),
+                    ),
+                    DropdownMenuItem(
+                      value: 'selesai',
+                      child: Text('✅ Selesai', style: GoogleFonts.poppins()),
+                    ),
+                    DropdownMenuItem(
+                      value: 'ditolak',
+                      child: Text('❌ Ditolak', style: GoogleFonts.poppins()),
+                    ),
+                  ],
+                  onChanged: (value) {
+                    setState(() => _selectedStatus = value!);
+                  },
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          
+          
+// Catatan Admin
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Catatan Admin *',
+                style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                  fontSize: 14,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(14),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  controller: _catatanController,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(14),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.all(16),
+                    filled: true,
+                    fillColor: Colors.white,
+                    hintText: 'Berikan catatan untuk pemohon...',
+                    hintStyle: GoogleFonts.poppins(
+                      color: const Color(0xFF636E72),
+                      fontSize: 14,
+                    ),
+                  ),
+                  maxLines: 4,
+                  style: GoogleFonts.poppins(
+                    fontSize: 14,
+                    color: const Color(0xFF2D3436),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          
+          // File Hasil (jika status selesai)
+          if (_selectedStatus == 'selesai') ...[
+            const SizedBox(height: 16),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'File Hasil (Opsional)',
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  'Upload surat hasil yang sudah ditandatangani',
+                  style: GoogleFonts.poppins(
+                    fontSize: 12,
+                    color: Colors.white.withOpacity(0.9),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(14),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: FilePickerWidget(
+                    onFileSelected: (file) {
+                      setState(() => _fileHasil = file);
+                    },
+                    label: 'Unggah file hasil',
+                  ),
+                ),
+              ],
+            ),
+          ],
+          
+          const SizedBox(height: 20),
+          
+          // Update Button
+          Container(
+            width: double.infinity,
+            height: 54,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(14),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: ElevatedButton(
+              onPressed: _isUpdating ? null : _updateStatus,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                foregroundColor: const Color(0xFF6C5CE7),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(14),
+                ),
+                elevation: 0,
+              ),
+              child: _isUpdating
+                  ? const SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 2.5,
+                        color: Color(0xFF6C5CE7),
+                      ),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.check_circle_rounded, size: 22),
+                        const SizedBox(width: 12),
+                        Text(
+                          'UPDATE STATUS',
+                          style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                            letterSpacing: 1,
+                          ),
+                        ),
+                      ],
+                    ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFileHasilCard() {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Color(0xFF00D2D3), Color(0xFF26A69A)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF00D2D3).withOpacity(0.3),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.25),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Icon(
+                  Icons.file_download_done_rounded,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                'File Hasil Tersedia',
+                style: GoogleFonts.poppins(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          FileDownloadWidget(
+            fileName: _surat!.fileHasil!,
+            fileType: 'hasil',
+            label: 'File Hasil - ${_surat!.fileHasilType}',
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -8,6 +8,7 @@ class UserModel {
   final String role; // 'admin' atau 'warga'
   final String? fotoProfile;
   final String status; // 'active' atau 'inactive'
+  final DateTime? bergabungSejak;
 
   UserModel({
     required this.id,
@@ -18,6 +19,7 @@ class UserModel {
     required this.role,
     this.fotoProfile,
     required this.status,
+    this.bergabungSejak,
   });
 
   // From JSON - FIXED UNTUK HANDLE NULL
@@ -31,6 +33,7 @@ class UserModel {
       role: json['role']?.toString() ?? 'warga',
       fotoProfile: json['foto_profile']?.toString(), // Bisa null
       status: json['status']?.toString() ?? 'active',
+      bergabungSejak: json['bergabung_sejak'] != null ? DateTime.tryParse(json['bergabung_sejak'].toString()) : null,
     );
   }
 
@@ -45,6 +48,7 @@ class UserModel {
       'role': role,
       'foto_profile': fotoProfile,
       'status': status,
+      'bergabung_sejak': bergabungSejak?.toIso8601String(),
     };
   }
 

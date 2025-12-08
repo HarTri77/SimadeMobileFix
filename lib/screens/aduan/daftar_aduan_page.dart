@@ -76,12 +76,7 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
     } catch (e) {
       setState(() => _isError = true);
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Gagal memuat aduan: $e'),
-            backgroundColor: AppColors.errorColor,
-          ),
-        );
+        _showErrorSnackbar('Gagal memuat aduan: $e');
       }
     } finally {
       setState(() => _isLoading = false);
@@ -92,30 +87,44 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
           'Hapus Aduan',
           style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            color: AppColors.darkNavy,
+            fontWeight: FontWeight.w700,
+            color: const Color(0xFF2D3436),
           ),
         ),
         content: Text(
           'Apakah Anda yakin ingin menghapus aduan "$judul"? Tindakan ini tidak dapat dibatalkan.',
-          style: GoogleFonts.poppins(),
+          style: GoogleFonts.poppins(
+            color: const Color(0xFF636E72),
+            height: 1.5,
+          ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
             child: Text(
               'Batal',
-              style: GoogleFonts.poppins(color: Colors.grey.shade600),
+              style: GoogleFonts.poppins(
+                color: const Color(0xFF636E72),
+                fontWeight: FontWeight.w600,
+              ),
             ),
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(true),
+            style: TextButton.styleFrom(
+              backgroundColor: const Color(0xFFFF6B6B).withOpacity(0.1),
+            ),
             child: Text(
               'Hapus',
-              style: GoogleFonts.poppins(color: AppColors.errorColor),
+              style: GoogleFonts.poppins(
+                color: const Color(0xFFFF6B6B),
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ],
@@ -128,15 +137,8 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
       await AduanService.deleteAduan(aduanId);
       
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Aduan berhasil dihapus'),
-            backgroundColor: AppColors.successColor,
-            behavior: SnackBarBehavior.floating,
-          ),
-        );
+        _showSuccessSnackbar('Aduan berhasil dihapus');
         
-        // Hapus dari local state tanpa reload API
         setState(() {
           _aduanList.removeWhere((aduan) => aduan.id == aduanId);
           _applyFilter();
@@ -144,34 +146,44 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
       }
     } catch (e) {
       if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Gagal menghapus aduan: $e'),
-            backgroundColor: AppColors.errorColor,
-          ),
-        );
+        _showErrorSnackbar('Gagal menghapus aduan: $e');
       }
     }
   }
 
-  // PERBAIKAN: Semua aduan bisa dihapus, tidak peduli statusnya
-  bool _canDeleteAduan(AduanModel aduan) {
-    return true; // Semua aduan bisa dihapus dalam kondisi apapun
+  void _showSuccessSnackbar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: const Color(0xFF00D2D3),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+    );
+  }
+
+  void _showErrorSnackbar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: const Color(0xFFFF6B6B),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+    );
   }
 
   Widget _buildAduanCard(AduanModel aduan, bool isSmallScreen) {
-    bool canDelete = _canDeleteAduan(aduan);
-    
     return Container(
       margin: EdgeInsets.only(bottom: isSmallScreen ? 12 : 16),
       child: GlassContainer(
-        blur: 10,
-        opacity: 0.1,
-        borderRadius: BorderRadius.circular(16),
+        blur: 15,
+        opacity: 0.08,
+        borderRadius: BorderRadius.circular(20),
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: BorderRadius.circular(20),
             onTap: () {
               Navigator.push(
                 context,
@@ -181,110 +193,59 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
               );
             },
             child: Container(
-              padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+              padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Header dengan Status dan Prioritas
                   Row(
-                    children: [
-                      Expanded(
-                        child: Wrap(
-                          spacing: 8,
-                          runSpacing: 4,
-                          children: [
-                            // Status Badge
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: isSmallScreen ? 8 : 10,
-                                vertical: isSmallScreen ? 4 : 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: aduan.statusColor.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: aduan.statusColor, width: 1),
-                              ),
-                              child: Text(
-                                aduan.statusText.toUpperCase(),
-                                style: GoogleFonts.poppins(
-                                  fontSize: isSmallScreen ? 9 : 10,
-                                  fontWeight: FontWeight.w600,
-                                  color: aduan.statusColor,
-                                ),
-                              ),
-                            ),
-                            
-                            // Prioritas Badge
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: isSmallScreen ? 8 : 10,
-                                vertical: isSmallScreen ? 4 : 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: aduan.prioritasColor.withOpacity(0.2),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(color: aduan.prioritasColor, width: 1),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Icon(
-                                    Icons.flag,
-                                    size: isSmallScreen ? 10 : 12,
-                                    color: aduan.prioritasColor,
-                                  ),
-                                  SizedBox(width: 4),
-                                  Text(
-                                    aduan.prioritasText,
-                                    style: GoogleFonts.poppins(
-                                      fontSize: isSmallScreen ? 9 : 10,
-                                      fontWeight: FontWeight.w600,
-                                      color: aduan.prioritasColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  
-                  SizedBox(height: 8),
-                  
-                  // Row untuk Tanggal dan Tombol Hapus
-                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      // Tanggal
-                      Expanded(
-                        child: Text(
-                          aduan.formattedCreatedAt,
-                          style: GoogleFonts.poppins(
-                            fontSize: isSmallScreen ? 10 : 11,
-                            color: Colors.grey.shade600,
-                          ),
-                        ),
-                      ),
-                      
-                      // TOMBOL HAPUS - SELALU MUNCUL
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () => _deleteAduan(aduan.id, aduan.judul),
-                          borderRadius: BorderRadius.circular(8),
-                          child: Container(
+                      // Status dan Prioritas
+                      Wrap(
+                        spacing: 8,
+                        runSpacing: 6,
+                        children: [
+                          // Status Badge
+                          Container(
                             padding: EdgeInsets.symmetric(
                               horizontal: isSmallScreen ? 10 : 12,
-                              vertical: isSmallScreen ? 6 : 8,
+                              vertical: isSmallScreen ? 5 : 6,
                             ),
                             decoration: BoxDecoration(
-                              color: AppColors.errorColor.withOpacity(0.15),
-                              borderRadius: BorderRadius.circular(8),
+                              gradient: LinearGradient(
+                                colors: [
+                                  aduan.statusColor,
+                                  aduan.statusColor.withOpacity(0.8),
+                                ],
+                              ),
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Text(
+                              aduan.statusText.toUpperCase(),
+                              style: GoogleFonts.poppins(
+                                fontSize: isSmallScreen ? 9 : 10,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                          
+                          // Prioritas Badge
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: isSmallScreen ? 10 : 12,
+                              vertical: isSmallScreen ? 5 : 6,
+                            ),
+                            decoration: BoxDecoration(
+                              color: aduan.prioritasColor.withOpacity(0.15),
+                              borderRadius: BorderRadius.circular(12),
                               border: Border.all(
-                                color: AppColors.errorColor,
+                                color: aduan.prioritasColor,
                                 width: 1.5,
                               ),
                             ),
@@ -292,20 +253,41 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
-                                  Icons.delete_outline,
-                                  size: isSmallScreen ? 16 : 18,
-                                  color: AppColors.errorColor,
+                                  Icons.flag_rounded,
+                                  size: isSmallScreen ? 10 : 12,
+                                  color: aduan.prioritasColor,
                                 ),
                                 SizedBox(width: 4),
                                 Text(
-                                  'Hapus',
+                                  aduan.prioritasText,
                                   style: GoogleFonts.poppins(
-                                    fontSize: isSmallScreen ? 11 : 12,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.errorColor,
+                                    fontSize: isSmallScreen ? 9 : 10,
+                                    fontWeight: FontWeight.w700,
+                                    color: aduan.prioritasColor,
                                   ),
                                 ),
                               ],
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      // Tombol Hapus
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () => _deleteAduan(aduan.id, aduan.judul),
+                          borderRadius: BorderRadius.circular(10),
+                          child: Container(
+                            padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
+                            decoration: BoxDecoration(
+                              color: const Color(0xFFFF6B6B).withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Icon(
+                              Icons.delete_outline_rounded,
+                              size: isSmallScreen ? 16 : 18,
+                              color: const Color(0xFFFF6B6B),
                             ),
                           ),
                         ),
@@ -313,15 +295,16 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
                     ],
                   ),
                   
-                  SizedBox(height: isSmallScreen ? 8 : 12),
+                  SizedBox(height: isSmallScreen ? 12 : 16),
 
                   // Judul
                   Text(
                     aduan.judul,
                     style: GoogleFonts.poppins(
-                      fontSize: isSmallScreen ? 14 : 16,
-                      fontWeight: FontWeight.w600,
-                      color: AppColors.darkNavy,
+                      fontSize: isSmallScreen ? 15 : 17,
+                      fontWeight: FontWeight.w700,
+                      color: const Color(0xFF2D3436),
+                      height: 1.3,
                     ),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
@@ -330,65 +313,104 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
 
                   // Preview isi aduan
                   Text(
-                    aduan.isiAduan.length > 100 
-                        ? '${aduan.isiAduan.substring(0, 100)}...' 
+                    aduan.isiAduan.length > 120 
+                        ? '${aduan.isiAduan.substring(0, 120)}...' 
                         : aduan.isiAduan,
                     style: GoogleFonts.poppins(
                       fontSize: isSmallScreen ? 12 : 13,
-                      color: Colors.grey.shade600,
-                      height: 1.4,
+                      color: const Color(0xFF636E72),
+                      height: 1.5,
                     ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(height: isSmallScreen ? 12 : 16),
 
-                  // Footer
-                  Wrap(
-                    spacing: isSmallScreen ? 12 : 16,
-                    runSpacing: 8,
+                  // Footer dengan informasi tambahan
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Kategori
-                      if (aduan.namaKategori != null)
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
+                      // Informasi Kategori dan Lokasi
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(
-                              Icons.category_outlined,
-                              size: isSmallScreen ? 12 : 14,
-                              color: Colors.grey.shade500,
-                            ),
-                            SizedBox(width: 4),
+                            // Tanggal
                             Text(
-                              aduan.namaKategori!,
+                              aduan.formattedCreatedAt,
                               style: GoogleFonts.poppins(
                                 fontSize: isSmallScreen ? 10 : 11,
-                                color: Colors.grey.shade600,
+                                color: const Color(0xFF636E72),
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
-                          ],
-                        ),
+                            SizedBox(height: 6),
+                            
+                            // Kategori dan Lokasi
+                            Wrap(
+                              spacing: 12,
+                              runSpacing: 6,
+                              children: [
+                                if (aduan.namaKategori != null)
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.category_rounded,
+                                        size: isSmallScreen ? 12 : 14,
+                                        color: const Color(0xFF00D2D3),
+                                      ),
+                                      SizedBox(width: 4),
+                                      Text(
+                                        aduan.namaKategori!,
+                                        style: GoogleFonts.poppins(
+                                          fontSize: isSmallScreen ? 10 : 11,
+                                          color: const Color(0xFF636E72),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
 
-                      // Lokasi jika ada
-                      if (aduan.lokasi != null)
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.location_on_outlined,
-                              size: isSmallScreen ? 12 : 14,
-                              color: Colors.grey.shade500,
-                            ),
-                            SizedBox(width: 4),
-                            Text(
-                              'Lokasi',
-                              style: GoogleFonts.poppins(
-                                fontSize: isSmallScreen ? 10 : 11,
-                                color: Colors.grey.shade600,
-                              ),
+                                if (aduan.lokasi != null)
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Icon(
+                                        Icons.location_on_rounded,
+                                        size: isSmallScreen ? 12 : 14,
+                                        color: const Color(0xFF00D2D3),
+                                      ),
+                                      SizedBox(width: 4),
+                                      Text(
+                                        'Lokasi',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: isSmallScreen ? 10 : 11,
+                                          color: const Color(0xFF636E72),
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                              ],
                             ),
                           ],
                         ),
+                      ),
+
+                      // Arrow indicator
+                      Container(
+                        padding: EdgeInsets.all(isSmallScreen ? 6 : 8),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF00D2D3).withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          Icons.arrow_forward_ios_rounded,
+                          size: isSmallScreen ? 14 : 16,
+                          color: const Color(0xFF00D2D3),
+                        ),
+                      ),
                     ],
                   ),
                 ],
@@ -402,29 +424,33 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
 
   Widget _buildSearchBar(bool isSmallScreen) {
     return GlassContainer(
-      blur: 10,
-      opacity: 0.1,
-      borderRadius: BorderRadius.circular(16),
+      blur: 15,
+      opacity: 0.08,
+      borderRadius: BorderRadius.circular(20),
       child: Container(
-        padding: EdgeInsets.all(isSmallScreen ? 12 : 16),
+        padding: EdgeInsets.all(isSmallScreen ? 4 : 6),
         child: TextField(
           controller: _searchController,
           decoration: InputDecoration(
             hintText: 'Cari aduan...',
             hintStyle: GoogleFonts.poppins(
-              color: Colors.grey.shade500,
+              color: const Color(0xFF636E72),
+              fontSize: isSmallScreen ? 14 : 15,
             ),
-            prefixIcon: Icon(Icons.search, color: Colors.grey.shade500),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide.none,
+            prefixIcon: Icon(
+              Icons.search_rounded,
+              color: const Color(0xFF00D2D3),
+              size: isSmallScreen ? 20 : 22,
             ),
-            filled: true,
-            fillColor: Colors.white.withOpacity(0.9),
+            border: InputBorder.none,
             contentPadding: EdgeInsets.symmetric(
               horizontal: isSmallScreen ? 12 : 16,
               vertical: isSmallScreen ? 14 : 16,
             ),
+          ),
+          style: GoogleFonts.poppins(
+            fontSize: isSmallScreen ? 14 : 15,
+            color: const Color(0xFF2D3436),
           ),
         ),
       ),
@@ -433,45 +459,138 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
 
   Widget _buildFilterChips(bool isSmallScreen) {
     final statusList = [
-      {'value': 'semua', 'label': 'Semua', 'color': AppColors.primaryBlue},
-      {'value': 'baru', 'label': 'Baru', 'color': Colors.orange},
-      {'value': 'diproses', 'label': 'Diproses', 'color': Colors.blue},
-      {'value': 'selesai', 'label': 'Selesai', 'color': Colors.green},
-      {'value': 'ditolak', 'label': 'Ditolak', 'color': Colors.red},
+      {'value': 'semua', 'label': 'Semua', 'color': const Color(0xFF00D2D3)},
+      {'value': 'baru', 'label': 'Baru', 'color': const Color(0xFFFFA502)},
+      {'value': 'diproses', 'label': 'Diproses', 'color': const Color(0xFF6C5CE7)},
+      {'value': 'selesai', 'label': 'Selesai', 'color': const Color(0xFF00D2D3)},
+      {'value': 'ditolak', 'label': 'Ditolak', 'color': const Color(0xFFFF6B6B)},
     ];
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: statusList.map((status) {
+    return SizedBox(
+      height: isSmallScreen ? 40 : 45,
+      child: ListView.builder(
+        scrollDirection: Axis.horizontal,
+        itemCount: statusList.length,
+        itemBuilder: (context, index) {
+          final status = statusList[index];
           final isSelected = _selectedStatus == status['value'];
           return Container(
-            margin: EdgeInsets.only(right: 8),
-            child: ChoiceChip(
-              label: Text(
-                status['label'] as String,
-                style: GoogleFonts.poppins(
-                  fontSize: isSmallScreen ? 11 : 12,
-                  fontWeight: FontWeight.w600,
-                  color: isSelected ? Colors.white : status['color'] as Color,
+            margin: EdgeInsets.only(right: 8, top: 4, bottom: 4),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(15),
+                onTap: () {
+                  setState(() {
+                    _selectedStatus = status['value'] as String;
+                    _applyFilter();
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isSmallScreen ? 16 : 18,
+                    vertical: isSmallScreen ? 8 : 10,
+                  ),
+                  decoration: BoxDecoration(
+                    gradient: isSelected
+                        ? LinearGradient(
+                            colors: [
+                              status['color'] as Color,
+                              (status['color'] as Color).withOpacity(0.8),
+                            ],
+                          )
+                        : null,
+                    color: isSelected ? null : Colors.white.withOpacity(0.6),
+                    borderRadius: BorderRadius.circular(15),
+                    border: Border.all(
+                      color: isSelected 
+                          ? Colors.transparent 
+                          : (status['color'] as Color).withOpacity(0.3),
+                      width: 1.5,
+                    ),
+                    boxShadow: isSelected
+                        ? [
+                            BoxShadow(
+                              color: (status['color'] as Color).withOpacity(0.3),
+                              blurRadius: 10,
+                              offset: Offset(0, 4),
+                            ),
+                          ]
+                        : null,
+                  ),
+                  child: Text(
+                    status['label'] as String,
+                    style: GoogleFonts.poppins(
+                      fontSize: isSmallScreen ? 11 : 12,
+                      fontWeight: FontWeight.w700,
+                      color: isSelected ? Colors.white : status['color'] as Color,
+                    ),
+                  ),
                 ),
-              ),
-              selected: isSelected,
-              onSelected: (selected) {
-                setState(() {
-                  _selectedStatus = selected ? status['value'] as String : 'semua';
-                  _applyFilter();
-                });
-              },
-              backgroundColor: Colors.white,
-              selectedColor: status['color'] as Color,
-              side: BorderSide(
-                color: status['color'] as Color,
-                width: 1,
               ),
             ),
           );
-        }).toList(),
+        },
+      ),
+    );
+  }
+
+  Widget _buildHeader(bool isSmallScreen) {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: isSmallScreen ? 16 : 20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Aduan Saya',
+                style: GoogleFonts.poppins(
+                  fontSize: isSmallScreen ? 22 : 26,
+                  fontWeight: FontWeight.w700,
+                  color: const Color(0xFF2D3436),
+                ),
+              ),
+              SizedBox(height: 4),
+              Text(
+                'Kelola dan pantau aduan Anda',
+                style: GoogleFonts.poppins(
+                  fontSize: isSmallScreen ? 12 : 13,
+                  color: const Color(0xFF636E72),
+                ),
+              ),
+            ],
+          ),
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: _loadAduan,
+              borderRadius: BorderRadius.circular(12),
+              child: Container(
+                padding: EdgeInsets.all(isSmallScreen ? 10 : 12),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF00D2D3), Color(0xFF26A69A)],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF00D2D3).withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.refresh_rounded,
+                  color: Colors.white,
+                  size: isSmallScreen ? 20 : 22,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -482,124 +601,163 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
     final isSmallScreen = screenWidth < 360;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Aduan Saya',
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            color: AppColors.darkNavy,
-          ),
-        ),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: AppColors.darkNavy),
-          onPressed: () => Navigator.pop(context),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh, color: AppColors.darkNavy),
-            onPressed: _loadAduan,
-          ),
-        ],
-      ),
-      body: Container(
-        decoration: BoxDecoration(gradient: AppColors.backgroundGradient),
-        child: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
-            child: Column(
-              children: [
-                // Search Bar
-                _buildSearchBar(isSmallScreen),
-                SizedBox(height: isSmallScreen ? 12 : 16),
-                
-                // Filter Chips
-                _buildFilterChips(isSmallScreen),
-                SizedBox(height: isSmallScreen ? 12 : 16),
-                
-                // Results Count
-                if (!_isLoading && !_isError)
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Ditemukan ${_filteredAduanList.length} aduan',
-                      style: GoogleFonts.poppins(
-                        fontSize: isSmallScreen ? 12 : 14,
-                        color: Colors.grey.shade600,
-                      ),
+      backgroundColor: const Color(0xFFF5F7FA),
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(isSmallScreen ? 16 : 20),
+          child: Column(
+            children: [
+              // Header
+              _buildHeader(isSmallScreen),
+              SizedBox(height: isSmallScreen ? 16 : 20),
+              
+              // Search Bar
+              _buildSearchBar(isSmallScreen),
+              SizedBox(height: isSmallScreen ? 16 : 20),
+              
+              // Filter Chips
+              _buildFilterChips(isSmallScreen),
+              SizedBox(height: isSmallScreen ? 16 : 20),
+              
+              // Results Count
+              if (!_isLoading && !_isError)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Ditemukan ${_filteredAduanList.length} aduan',
+                    style: GoogleFonts.poppins(
+                      fontSize: isSmallScreen ? 12 : 13,
+                      color: const Color(0xFF636E72),
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                SizedBox(height: 8),
-                
-                // Main Content
-                Expanded(
-                  child: _isLoading
-                      ? Center(child: CircularProgressIndicator(color: AppColors.primaryBlue))
-                      : _isError
-                          ? _buildErrorState()
-                          : _filteredAduanList.isEmpty
-                              ? _buildEmptyState(isSmallScreen)
-                              : RefreshIndicator(
-                                  onRefresh: _loadAduan,
-                                  color: AppColors.primaryBlue,
-                                  child: ListView.builder(
-                                    physics: BouncingScrollPhysics(),
-                                    itemCount: _filteredAduanList.length,
-                                    itemBuilder: (context, index) {
-                                      return _buildAduanCard(_filteredAduanList[index], isSmallScreen);
-                                    },
-                                  ),
-                                ),
                 ),
-              ],
-            ),
+              SizedBox(height: isSmallScreen ? 12 : 16),
+              
+              // Main Content
+              Expanded(
+                child: _isLoading
+                    ? _buildLoadingState(isSmallScreen)
+                    : _isError
+                        ? _buildErrorState(isSmallScreen)
+                        : _filteredAduanList.isEmpty
+                            ? _buildEmptyState(isSmallScreen)
+                            : RefreshIndicator(
+                                onRefresh: _loadAduan,
+                                color: const Color(0xFF00D2D3),
+                                backgroundColor: Colors.white,
+                                child: ListView.builder(
+                                  physics: const BouncingScrollPhysics(),
+                                  itemCount: _filteredAduanList.length,
+                                  itemBuilder: (context, index) {
+                                    return _buildAduanCard(_filteredAduanList[index], isSmallScreen);
+                                  },
+                                ),
+                              ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 
-  Widget _buildErrorState() {
+  Widget _buildLoadingState(bool isSmallScreen) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            size: 64,
-            color: AppColors.errorColor,
+          SizedBox(
+            width: isSmallScreen ? 40 : 50,
+            height: isSmallScreen ? 40 : 50,
+            child: CircularProgressIndicator(
+              strokeWidth: 3,
+              color: const Color(0xFF00D2D3),
+            ),
           ),
           SizedBox(height: 16),
           Text(
+            'Memuat aduan...',
+            style: GoogleFonts.poppins(
+              fontSize: isSmallScreen ? 14 : 16,
+              color: const Color(0xFF636E72),
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildErrorState(bool isSmallScreen) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            width: isSmallScreen ? 80 : 100,
+            height: isSmallScreen ? 80 : 100,
+            decoration: BoxDecoration(
+              color: const Color(0xFFFF6B6B).withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.error_outline_rounded,
+              size: isSmallScreen ? 40 : 50,
+              color: const Color(0xFFFF6B6B),
+            ),
+          ),
+          SizedBox(height: isSmallScreen ? 16 : 20),
+          Text(
             'Gagal memuat aduan',
             style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
+              fontSize: isSmallScreen ? 16 : 18,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF2D3436),
             ),
           ),
           SizedBox(height: 8),
           Text(
             'Silakan coba lagi',
             style: GoogleFonts.poppins(
-              color: Colors.grey.shade600,
+              color: const Color(0xFF636E72),
+              fontSize: isSmallScreen ? 13 : 14,
             ),
+            textAlign: TextAlign.center,
           ),
-          SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: _loadAduan,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryBlue,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+          SizedBox(height: isSmallScreen ? 20 : 24),
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: _loadAduan,
+              borderRadius: BorderRadius.circular(16),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: isSmallScreen ? 24 : 32,
+                  vertical: isSmallScreen ? 12 : 14,
+                ),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    colors: [Color(0xFF00D2D3), Color(0xFF26A69A)],
+                  ),
+                  borderRadius: BorderRadius.circular(16),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xFF00D2D3).withOpacity(0.3),
+                      blurRadius: 10,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Text(
+                  'Coba Lagi',
+                  style: GoogleFonts.poppins(
+                    fontSize: isSmallScreen ? 14 : 15,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-            ),
-            child: Text(
-              'Coba Lagi',
-              style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
             ),
           ),
         ],
@@ -612,30 +770,42 @@ class _DaftarAduanPageState extends State<DaftarAduanPage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.report_outlined,
-            size: 64,
-            color: Colors.grey.shade400,
+          Container(
+            width: isSmallScreen ? 100 : 120,
+            height: isSmallScreen ? 100 : 120,
+            decoration: BoxDecoration(
+              color: const Color(0xFF00D2D3).withOpacity(0.1),
+              shape: BoxShape.circle,
+            ),
+            child: Icon(
+              Icons.report_problem_outlined,
+              size: isSmallScreen ? 40 : 50,
+              color: const Color(0xFF00D2D3),
+            ),
           ),
-          SizedBox(height: 16),
+          SizedBox(height: isSmallScreen ? 20 : 24),
           Text(
             _searchController.text.isEmpty && _selectedStatus == 'semua'
                 ? 'Belum ada aduan'
                 : 'Tidak ada aduan yang sesuai',
             style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.darkNavy,
+              fontSize: isSmallScreen ? 16 : 18,
+              fontWeight: FontWeight.w700,
+              color: const Color(0xFF2D3436),
             ),
+            textAlign: TextAlign.center,
           ),
           SizedBox(height: 8),
           Text(
             _searchController.text.isEmpty && _selectedStatus == 'semua'
-                ? 'Ajukan aduan pertama Anda'
-                : 'Coba ubah pencarian atau filter',
+                ? 'Mulai dengan mengajukan aduan pertama Anda'
+                : 'Coba ubah pencarian atau filter yang digunakan',
             style: GoogleFonts.poppins(
-              color: Colors.grey.shade600,
+              color: const Color(0xFF636E72),
+              fontSize: isSmallScreen ? 13 : 14,
+              height: 1.4,
             ),
+            textAlign: TextAlign.center,
           ),
         ],
       ),
