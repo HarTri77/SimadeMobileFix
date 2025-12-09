@@ -1,7 +1,7 @@
 // lib/config/app_config.dart
 class AppConfig {
   // 🔥 BASE URL API (Ganti sesuai server kamu)
-  static const String baseUrl = 'http://localhost/simade_api';
+  static const String baseUrl = 'https://simade.miomihost.com/api/';
   
   // 🔥 API ENDPOINTS
   static const String loginEndpoint = '$baseUrl/login.php';

@@ -28,24 +28,24 @@ static Future<String> getBeritaImageUrl(String fileName) async {
   }
 }
 
-  // ✅ PICK FILE DARI DEVICE
-  static Future<FilePickerResult?> pickFile({
-    List<String>? allowedExtensions,
-    String? fileType,
-  }) async {
-    try {
-      final result = await FilePicker.platform.pickFiles(
-        type: FileType.custom,
-        allowedExtensions: allowedExtensions ?? ['pdf', 'jpg', 'jpeg', 'png', 'doc', 'docx'],
-        allowMultiple: false,
-      );
+// di method pickFile() - baris 33
+static Future<FilePickerResult?> pickFile({
+  List<String>? allowedExtensions,
+  String? fileType,
+}) async {
+  try {
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: allowedExtensions ?? ['pdf', 'jpg', 'jpeg', 'png', 'doc', 'docx'],
+      allowMultiple: false,
+      withData: true, // ✅ TAMBAHKAN INI
+    );
 
-      return result;
-    } catch (e) {
-      throw Exception('Gagal memilih file: $e');
-    }
+    return result;
+  } catch (e) {
+    throw Exception('Gagal memilih file: $e');
   }
-
+}
   // ✅ UPLOAD FILE KE SERVER
   static Future<Map<String, dynamic>> uploadFile({
     required PlatformFile file,
@@ -106,33 +106,35 @@ static Future<String> getBeritaImageUrl(String fileName) async {
       throw Exception('Terjadi kesalahan: $e');
     }
   }
-
-  // ✅ FIXED: DOWNLOAD FILE - SOLUSI UTAMA
-  static Future<String> getDownloadUrl(String fileName, String fileType) async {
-    try {
-      // ✅ PERBAIKAN 1: Encode fileName untuk handle karakter khusus
-      final encodedFileName = Uri.encodeComponent(fileName);
-      
-      // ✅ PERBAIKAN 2: Gunakan baseUrl yang konsisten
-      String baseUrl = AppConfig.baseUrl;
-      
-      // ✅ PERBAIKAN 3: Pastikan tidak ada double slash
-      if (baseUrl.endsWith('/')) {
-        baseUrl = baseUrl.substring(0, baseUrl.length - 1);
-      }
-      
-      // ✅ PERBAIKAN 4: Buat URL download yang benar
-      final downloadUrl = '$baseUrl/surat.php?download=true&file_name=$encodedFileName&file_type=$fileType';
-      
-      // Debug logging
-      print('🔗 Generated Download URL: $downloadUrl');
-      
-      return downloadUrl;
-    } catch (e) {
-      print('❌ Error generating download URL: $e');
-      throw 'Gagal membuat URL download: $e';
+static Future<String> getDownloadUrl(String fileName, String fileType) async {
+  try {
+    String baseUrl = AppConfig.baseUrl.trim();
+    
+    // Hapus trailing slash jika ada
+    if (baseUrl.endsWith('/')) {
+      baseUrl = baseUrl.substring(0, baseUrl.length - 1);
     }
+    
+    // ✅ PERBAIKAN: Gunakan URL langsung ke file (BUKAN via script)
+    final downloadUrl = '$baseUrl/uploads/surat_$fileType/$fileName';
+    
+    // Debug: print URL
+    print('🔗 Generated Direct File URL: $downloadUrl');
+    
+    return downloadUrl;
+  } catch (e) {
+    print('❌ Error generating URL: $e');
+    // Fallback ke metode lama jika error
+    return _getDownloadUrlViaScript(fileName, fileType);
   }
+}
+
+// Metode lama sebagai fallback
+static Future<String> _getDownloadUrlViaScript(String fileName, String fileType) async {
+  final baseUrl = AppConfig.baseUrl.trim().replaceAll(RegExp(r'\s+'), '');
+  final encodedFileName = Uri.encodeComponent(fileName);
+  return '$baseUrl/surat.php?download=true&file_name=$encodedFileName&file_type=$fileType';
+}
 
   // ✅ ALTERNATIVE: Download dengan token (jika diperlukan)
   static Future<String> getDownloadUrlWithToken(String fileName, String fileType) async {

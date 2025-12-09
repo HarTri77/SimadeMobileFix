@@ -30,10 +30,11 @@ class SuratService {
 
       request.headers['Authorization'] = 'Bearer $token';
 
-      final fileBytes = file.bytes;
-      if (fileBytes == null) {
-        throw Exception('File bytes tidak tersedia');
-      }
+// di method _uploadFile() - baris 48
+final fileBytes = file.bytes;
+if (fileBytes == null) {
+  throw Exception('File bytes tidak tersedia. File mungkin korup atau terlalu besar.');
+}
 
       final multipartFile = http.MultipartFile.fromBytes(
         'file',

@@ -35,21 +35,22 @@ class _FilePickerWidgetState extends State<FilePickerWidget> {
     try {
       final result = await FileService.pickFile();
       
-      if (result != null && result.files.isNotEmpty) {
-        final file = result.files.first;
-        
-        // Validasi ukuran file
-        if (!FileService.validateFileSize(file)) {
-          if (mounted) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('File terlalu besar. Maksimal 5MB'),
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
-          return;
-        }
+     // di method _pickFile() - baris 31, setelah result
+if (result != null && result.files.isNotEmpty) {
+  final file = result.files.first;
+  
+  // ✅ TAMBAHKAN VALIDASI BYTES
+  if (file.bytes == null) {
+    if (mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('File tidak bisa dibaca. Coba file lain.'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+    return;
+  }
         
         // Validasi extension
         if (!FileService.validateFileExtension(file)) {
@@ -119,8 +120,8 @@ class _FilePickerWidgetState extends State<FilePickerWidget> {
                 if (_fileName != null) ...[
                   Row(
                     children: [
-                     Icon(
-  FileService.getFileTypeIcon(_fileName!),
+                    Icon(
+  FileService.getFileTypeIcon(_fileName ?? ''),
   size: 22,
   color: Colors.blueGrey,
 ),
